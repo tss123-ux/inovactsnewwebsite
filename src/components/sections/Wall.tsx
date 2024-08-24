@@ -7,7 +7,7 @@ import Testimonial from "../cards/Testimonial";
 const poppins = Poppins({ weight: ["400", "500"], subsets: ["latin"] });
 const data = [
   {
-    user: "/images/26.svg",
+    user: "https://play-lh.googleusercontent.com/a/ACg8ocKdy9S0ALbpPb_3iM2rlIoLYgiPEX_CSFvwAjP2gQi_O7wPbQ=s32-rw-mo",
     name: "Sumit Dey",
     desc: "The app works smoothly without any glitch. The interface is simple and easy to use. It is useful for both students as they can collaborate on interesting projects and also entrepreneurs can spot early talent.",
   },
