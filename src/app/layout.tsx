@@ -8,7 +8,7 @@ const inter = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Invact Social",
+  title: "Inovact Social|Home",
   description: "",
 };
 
