@@ -4,7 +4,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="bg-[url('/images/2.svg')] bg-center bg-cover  max-w-[100%]    ">
+    <div className="bg-[url('/images/2.svg')] bg-center bg-cover min-h-[600px]  max-w-[100%]    ">
       <div className=" gap-10  lg:gap-5 flex flex-col items-center justify-start py-10">
         <Link
           href="https://youtu.be/vd5O47IF6xY?si=jRD8gTg6hUJACtuq"
