@@ -14,29 +14,25 @@ const teamMembers = [
     name: "D G Shivu",
     role: "Lead Developer",
     imageUrl: "/images/Shivu.jpg",
-
-    // linkedinUrl: "https://linkedin.com",
+    linkedinUrl: "",
   },
   {
     name: "Pratik Pendurkar",
     role: "Backend Engineer",
     imageUrl: "/images/Pratik.jpg",
-
-    // linkedinUrl: "https://linkedin.com",
+    linkedinUrl: "",
   },
   {
     name: "Apoorv Pandey",
     role: "Frontend Developer",
     imageUrl: "/images/Apoorv.jpg",
-
-    // linkedinUrl: "https://linkedin.com",
+    linkedinUrl: "",
   },
   {
     name: "Pranay Das",
     role: "Frontend Developer",
     imageUrl: "/images/Pranay.jpg",
-
-    // linkedinUrl: "https://linkedin.com",
+    linkedinUrl: "",
   },
 ];
 
