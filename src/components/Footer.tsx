@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="bg-[#1649FF] text-white lg:pt-20 pt-32 px-5 relative">
       <div className="max-w-7xl mx-auto flex justify-between flex-wrap lg:gap-0 gap-7 p-2">
         <div className="">
-          <h2 className="text-2xl font-medium mb-2">Inovact Pvt Ltd</h2>
+          <h2 className="text-2xl font-medium mb-2">Inovact Private Limited</h2>
           <p>
             Address : #731, E & F Block , Kuvempunagar, Mysore - 570023
             <br /> Email: inovacteam@gmail.com
@@ -83,8 +83,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-10 text-center">
-          &copy; {new Date().getFullYear()} All rights reserved by Inovact Pvt
-          Ltd..
+          &copy; {new Date().getFullYear()} All rights reserved by Inovact
+          Private Limited
         </div>
       </div>
     </div>

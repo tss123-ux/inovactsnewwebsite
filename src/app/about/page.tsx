@@ -5,29 +5,38 @@ import Navbar from "@/components/Navbar";
 
 const teamMembers = [
   {
-    name: "Sarang Pani",
+    name: "T S Sarang",
     role: "CEO & Founder",
-    linkedinUrl: "https://linkedin.com",
+    imageUrl: "/images/Sarang.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/sarang-pani",
   },
   {
     name: "D G Shivu",
     role: "Lead Developer",
-    linkedinUrl: "https://linkedin.com",
+    imageUrl: "/images/Shivu.jpg",
+
+    // linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Pratik Pendurkar",
     role: "Backend Engineer",
-    linkedinUrl: "https://linkedin.com",
+    imageUrl: "/images/Pratik.jpg",
+
+    // linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Apoorv Pandey",
     role: "Frontend Developer",
-    linkedinUrl: "https://linkedin.com",
+    imageUrl: "/images/Apoorv.jpg",
+
+    // linkedinUrl: "https://linkedin.com",
   },
   {
-    name: "Pranay",
+    name: "Pranay Das",
     role: "Frontend Developer",
-    linkedinUrl: "https://linkedin.com",
+    imageUrl: "/images/Pranay.jpg",
+
+    // linkedinUrl: "https://linkedin.com",
   },
 ];
 
@@ -40,47 +49,60 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold text-center mb-8">About Us</h1>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-gray-600 text-lg text-center mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            <h1 className="text-4xl font-bold text-center mb-16">About Us</h1>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-gray-700 text-lg leading-relaxed text-justify mb-8">
+                Inovact Private Limited, founded in 2021 by two visionary
+                engineering students, emerged from a shared frustration: the
+                difficulty students and entrepreneurs face in hiring teams and
+                navigating the cumbersome collaboration methods on multiple
+                social networks for projects & ideas. This realization sparked
+                their eureka moment, leading to the birth of Inovact Social.
+                This social network empowers students and entrepreneurs to
+                collaborate on projects and ideas & building proof of work,
+                rewarding them with incentives.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed text-justify mb-8">
+                Inovact's journey didn't stop there. Recognizing the need for
+                skill development, they launched the Inovact Student Community
+                Program, building small communities across engineering colleges
+                in India. Within just eight months, they trained over 2,000
+                students through technical workshops, fostering a new generation
+                of innovators. The founders, despite their non-business
+                backgrounds, embraced the challenge, learning the ropes from
+                scratch to build Inovact into what it is today.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed text-justify mb-8">
+                In addition to their flagship product, Inovact Social, they
+                created the Inovact Community on WhatsApp, a vibrant network of
+                over 1,500 students, mentors, and entrepreneurs.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Product Section */}
-        <div className="py-16 bg-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-8">Our Product</h2>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-gray-600 text-lg mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <p className="text-gray-600 text-lg">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
+        <div className="relative max-w-5xl mx-auto my-20">
+          {/* First row */}
+          <div className="flex justify-between mb-16">
+            {teamMembers.slice(0, 3).map((member) => (
+              <div key={member.name} className="w-64">
+                <TeamMember {...member} />
+              </div>
+            ))}
           </div>
-        </div>
 
-        {/* Team Section */}
-        <div className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Team</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {teamMembers.map((member) => (
-                <TeamMember key={member.name} {...member} />
-              ))}
-            </div>
+          {/* Second row with increased offset */}
+          <div className="flex justify-center gap-10">
+            {teamMembers.slice(3, 4).map((member) => (
+              <div key={member.name} className="w-64 mr-16">
+                <TeamMember {...member} />
+              </div>
+            ))}
+            {teamMembers.slice(4).map((member) => (
+              <div key={member.name} className="w-64">
+                <TeamMember {...member} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

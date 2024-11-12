@@ -13,7 +13,7 @@ const Navbar = () => {
           height={100}
           className="lg:w-[70px] lg:h-[70px] rounded-full w-[50px] h-[50px]"
         />
-        <Link href={"/"}>Inovact Pvt Ltd</Link>
+        <Link href={"/"}>Inovact Private Limited</Link>
       </div>
       <div className="flex flex-row gap-22 items-center">
         <div className="">
