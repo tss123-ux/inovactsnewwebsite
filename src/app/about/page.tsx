@@ -63,14 +63,14 @@ export default function AboutPage() {
                 rewarding them with incentives.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed text-justify mb-8">
-                Inovact's journey didn't stop there. Recognizing the need for
-                skill development, they launched the Inovact Student Community
-                Program, building small communities across engineering colleges
-                in India. Within just eight months, they trained over 2,000
-                students through technical workshops, fostering a new generation
-                of innovators. The founders, despite their non-business
-                backgrounds, embraced the challenge, learning the ropes from
-                scratch to build Inovact into what it is today.
+                Inovact&#39;s journey didn&#39;t stop there. Recognizing the
+                need for skill development, they launched the Inovact Student
+                Community Program, building small communities across engineering
+                colleges in India. Within just eight months, they trained over
+                2,000 students through technical workshops, fostering a new
+                generation of innovators. The founders, despite their
+                non-business backgrounds, embraced the challenge, learning the
+                ropes from scratch to build Inovact into what it is today.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed text-justify mb-8">
                 In addition to their flagship product, Inovact Social, they
