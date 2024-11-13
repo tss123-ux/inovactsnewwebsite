@@ -8,7 +8,8 @@ const teamMembers = [
     name: "T S Sarang",
     role: "CEO & Founder",
     imageUrl: "/images/Sarang.jpg",
-    linkedinUrl: "https://www.linkedin.com/in/sarang-pani",
+    linkedinUrl:
+      "https://www.linkedin.com/in/sarang-pani-14ab1919b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
     name: "D G Shivu",
@@ -78,24 +79,25 @@ export default function AboutPage() {
         </div>
 
         <div className="relative max-w-5xl mx-auto my-20">
+          <h2 className="text-3xl font-bold mb-8 text-center">Our Team</h2>
           {/* First row */}
-          <div className="flex justify-between mb-16">
+          <div className="flex flex-col sm:flex-row justify-between mb-16 gap-10">
             {teamMembers.slice(0, 3).map((member) => (
-              <div key={member.name} className="w-64">
+              <div key={member.name} className="w-full sm:w-64">
                 <TeamMember {...member} />
               </div>
             ))}
           </div>
 
           {/* Second row with increased offset */}
-          <div className="flex justify-center gap-10">
+          <div className="flex flex-col sm:flex-row justify-center gap-10">
             {teamMembers.slice(3, 4).map((member) => (
-              <div key={member.name} className="w-64 mr-16">
+              <div key={member.name} className="w-full sm:w-64 sm:mr-16">
                 <TeamMember {...member} />
               </div>
             ))}
             {teamMembers.slice(4).map((member) => (
-              <div key={member.name} className="w-64">
+              <div key={member.name} className="w-full sm:w-64">
                 <TeamMember {...member} />
               </div>
             ))}
