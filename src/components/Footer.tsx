@@ -3,7 +3,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import React from "react";
 
-const Footer = ({ scrollUp, scrollUpEffort }) => {
+const Footer = ({
+  scrollUp,
+  scrollUpEffort,
+}: {
+  scrollUp: any;
+  scrollUpEffort: any;
+}) => {
   const fadeInUpVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
