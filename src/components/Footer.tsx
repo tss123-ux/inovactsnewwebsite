@@ -1,89 +1,137 @@
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ scrollUp, scrollUpEffort }) => {
+  const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const popOutVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  };
+
   return (
-    <div className="bg-[#1649FF] text-white py-10 px-5 relative">
+    <motion.div
+      className="bg-[#1649FF] text-white py-10 px-5 relative"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: { transition: { staggerChildren: 0.2 } },
+      }}
+    >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-7 p-2">
-        <div className="">
+        <motion.div variants={fadeInUpVariants}>
           <h2 className="text-2xl font-medium mb-2">Inovact Private Limited</h2>
           <p>
-            Address : #731, E & F Block , Kuvempunagar, Mysore - 570023
+            Address: #731, E & F Block, Kuvempunagar, Mysore - 570023
             <br /> Email: inovacteam@gmail.com
             <br /> Phone: +91 8296024720
           </p>
-        </div>
-        <div className="flex flex-col md:flex-row gap-5">
-          <div className="">
+        </motion.div>
+        <motion.div
+          variants={fadeInUpVariants}
+          className="flex flex-col md:flex-row gap-5"
+        >
+          <div>
             <h2 className="text-2xl font-medium mb-2">Company</h2>
             <Link href="/about">
-              <h3>About Us </h3>
+              <h3 className="hover:text-gray-300 transition-colors">
+                About Us
+              </h3>
             </Link>
           </div>
-          <div className="">
+          <div>
             <h2 className="text-2xl font-medium mb-2">Product</h2>
-            <Link href="/#effortless">
-              <h3>Features </h3>
-            </Link>
-            <Link href="/#">
-              {" "}
-              <h3>Join community </h3>
-            </Link>
-          </div>
-        </div>
-        <div className="md:static absolute top-5 right-5">
-          <Link href="#" className="">
-            <div className="">
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 56 56"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="56" height="56" rx="28" fill="#E7E0F5" />
-                <path
-                  d="M21.88 32.9425L28 26.8358L34.12 32.9425L36 31.0625L28 23.0625L20 31.0625L21.88 32.9425Z"
-                  fill="#7000A3"
-                />
-              </svg>
+            <div onClick={scrollUpEffort}>
+              <h3 className="hover:text-gray-300 transition-colors cursor-pointer">
+                Features
+              </h3>
             </div>
-          </Link>
-        </div>
+            <div onClick={scrollUp}>
+              <h3 className="hover:text-gray-300 transition-colors cursor-pointer">
+                Join community
+              </h3>
+            </div>
+          </div>
+        </motion.div>
+        <motion.div
+          variants={popOutVariants}
+          className="md:static absolute top-5 right-5"
+          onClick={scrollUp}
+        >
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="cursor-pointer hover:scale-110 transition-transform duration-300"
+          >
+            <rect width="56" height="56" rx="28" fill="#E7E0F5" />
+            <path
+              d="M21.88 32.9425L28 26.8358L34.12 32.9425L36 31.0625L28 23.0625L20 31.0625L21.88 32.9425Z"
+              fill="#7000A3"
+            />
+          </svg>
+        </motion.div>
       </div>
       <div className="max-w-7xl mx-auto items-center justify-center mt-10">
-        <div className="">
+        <motion.div variants={fadeInUpVariants}>
           <div className="text-4xl text-center my-10">
-            @Join Inovact community{" "}
+            @Join Inovact community
           </div>
           <div className="flex items-center justify-center gap-10 flex-wrap">
             <Link
               href="https://chat.whatsapp.com/GClxUdUctuaEUeWmJmNYHo"
               target="_blank"
             >
-              <Image src="/images/33.svg" alt="" width={50} height={50} />
+              <Image
+                src="/images/33.svg"
+                alt="WhatsApp"
+                width={50}
+                height={50}
+                className="transition-transform duration-300 transform hover:scale-110"
+              />
             </Link>
             <Link
               href="https://www.instagram.com/inovact__/?utm_medium=copy_link"
               target="_blank"
             >
-              <Image src="/images/34.svg" alt="" width={50} height={50} />
-            </Link>{" "}
+              <Image
+                src="/images/34.svg"
+                alt="Instagram"
+                width={50}
+                height={50}
+                className="transition-transform duration-300 transform hover:scale-110"
+              />
+            </Link>
             <Link
               href="https://www.linkedin.com/company/inovact-pvt-ltd2/mycompany/"
               target="_blank"
             >
-              <Image src="/images/35.svg" alt="" width={50} height={50} />
+              <Image
+                src="/images/35.svg"
+                alt="LinkedIn"
+                width={50}
+                height={50}
+                className="transition-transform duration-300 transform hover:scale-110"
+              />
             </Link>
           </div>
-        </div>
-        <div className="mt-10 text-center text-xs sm:text-sm">
+        </motion.div>
+        <motion.div
+          variants={fadeInUpVariants}
+          className="mt-10 text-center text-xs sm:text-sm"
+        >
           &copy; {new Date().getFullYear()} All rights reserved by Inovact
           Private Limited
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

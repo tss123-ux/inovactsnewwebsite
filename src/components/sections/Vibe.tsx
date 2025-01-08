@@ -1,30 +1,92 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Vibe = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const scaleIn = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const rotateIn = {
+    hidden: { rotate: -10, opacity: 0 },
+    visible: {
+      rotate: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="max-w-7xl mx-auto overflow-x-hidden w-screen flex items-center justify-between py-14 lg:py-28 flex-col p-6">
-      <div className="flex flex-row lg:flex-nowrap flex-wrap items-start justify-start gap-20">
-        <div className="lg:w-1/2 flex flex-col gap-5">
-          <h2 className="lg:text-6xl text-4xl text-[#FF0505] text-balance max-w-lg leading-[1.3]">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      className="max-w-7xl mx-auto overflow-x-hidden w-full flex items-center justify-between py-14 lg:py-28 flex-col p-6"
+    >
+      <motion.div
+        variants={staggerChildren}
+        className="flex flex-row lg:flex-nowrap flex-wrap items-start justify-start gap-20 w-full"
+      >
+        <motion.div
+          variants={fadeInUp}
+          className="lg:w-1/2 flex flex-col gap-5"
+        >
+          <motion.h2
+            variants={scaleIn}
+            className="lg:text-6xl text-4xl text-[#FF0505] font-bold text-balance max-w-lg leading-[1.3] tracking-tight"
+          >
             Vibe Check: The Problem
-          </h2>
-          <p className="max-w-lg lg:text-xl text-base text-zinc-700">
-            Students have projects, and entrepreneurs have ideas, but they’re
-            struggling to find the squad to bring it all to life. 
-          </p>
-        </div>
-        <div className="lg:w-1/2">
-          <div className="text-[#FF0505] text-8xl">#</div>
-          <div className="text-white p-8 bg-[#FF0505] max-w-lg text-2xl">
-            Let’s be real, traditional collab methods are a total drag
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="max-w-lg lg:text-xl text-base text-zinc-700 leading-relaxed"
+          >
+            Students have projects, and entrepreneurs have ideas, but they're
+            struggling to find the squad to bring it all to life.
+          </motion.p>
+        </motion.div>
+
+        <motion.div variants={fadeInUp} className="lg:w-1/2 relative">
+          <motion.div
+            variants={rotateIn}
+            className="text-[#FF0505] text-8xl font-bold absolute -top-8 left-0 transform -rotate-12"
+          >
+            #
+          </motion.div>
+          <motion.div
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            className="text-white p-8 bg-[#FF0505] max-w-lg text-2xl shadow-lg rounded-lg transform hover:shadow-xl transition-all duration-300 border-4 border-white"
+          >
+            Let's be real, traditional collab methods are a total drag:
             time-consuming and just plain boring
-          </div>
-        </div>
-      </div>
-      {/* <div className="mt-20 lg:text-[160px] text-4xl font-medium">
-        Inovact social
-      </div> */}
-    </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
