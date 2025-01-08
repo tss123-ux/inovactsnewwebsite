@@ -33,7 +33,7 @@ const Why = () => {
   };
 
   const featureCardVariants = {
-    hidden: (index) => ({
+    hidden: (index: any) => ({
       opacity: 0,
       x: index === 0 ? -50 : index === 1 ? 50 : 0,
       y: index === 2 ? 50 : 0,

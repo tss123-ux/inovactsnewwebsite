@@ -65,7 +65,7 @@ const FAQ = () => {
     },
   };
 
-  const toggleFaq = (index) => {
+  const toggleFaq = (index: any) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 

@@ -55,7 +55,7 @@ const data = [
   },
 ];
 // New Tweet-like card component
-const TweetCard = ({ data }) => (
+const TweetCard = ({ data }: { data: any }) => (
   <div className="bg-white border border-gray-200 rounded-xl p-4 mx-3 w-80 hover:bg-gray-50 transition-colors">
     <div className="flex items-start space-x-3">
       <Image
