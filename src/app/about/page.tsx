@@ -73,14 +73,14 @@ export default function AboutPage() {
                   two engineering students who recognized the challenges in
                   student collaboration and team formation. What began as a
                   solution to their own frustrations has evolved into a
-                  comprehensive platform that's reshaping how students connect,
-                  collaborate, and create.
+                  comprehensive platform that&apos;s reshaping how students
+                  connect, collaborate, and create.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Through dedication and innovation, we've built a platform that
-                  addresses the real needs of students and entrepreneurs, making
-                  collaboration and skill development more accessible than ever
-                  before.
+                  Through dedication and innovation, we&apos;ve built a platform
+                  that addresses the real needs of students and entrepreneurs,
+                  making collaboration and skill development more accessible
+                  than ever before.
                 </p>
               </div>
             </div>
@@ -94,10 +94,10 @@ export default function AboutPage() {
                 <CardContent className="p-6">
                   <p className="text-gray-600 leading-relaxed">
                     Our mission is to break down barriers in student
-                    collaboration and skill development. We're creating an
+                    collaboration and skill development. We&apos;re creating an
                     ecosystem where innovation thrives, skills are developed,
                     and meaningful connections are forged. Through our platform,
-                    we're empowering the next generation of creators and
+                    we&apos;re empowering the next generation of creators and
                     innovators.
                   </p>
                 </CardContent>

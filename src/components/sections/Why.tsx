@@ -180,7 +180,7 @@ const Why = () => {
             </h2>
             <p className="text-[#535353] lg:text-right text-center leading-relaxed">
               Our 2-step collab process is designed for you. We get how hard it
-              can be to find your team, and we're here to make it happen.
+              can be to find your team, and we&apos;re here to make it happen.
             </p>
           </motion.div>
 
@@ -195,7 +195,7 @@ const Why = () => {
                 No BS Zone
               </h2>
               <p className="text-[#535353] leading-relaxed text-center lg:text-left">
-                We're all about building serious & cool stuff. Students and
+                We&apos;re all about building serious & cool stuff. Students and
                 early-stage entrepreneurs can work together without the fluff.
               </p>
             </motion.div>
@@ -210,8 +210,8 @@ const Why = () => {
                 Gamified Experience
               </h2>
               <p className="text-[#535353] leading-relaxed text-center lg:text-left">
-                We're turning hard work into rewards. Your hustle deserves
-                recognition, and we're here to make sure it doesn't go
+                We&apos;re turning hard work into rewards. Your hustle deserves
+                recognition, and we&apos;re here to make sure it doesn&apos;t go
                 unnoticed.
               </p>
             </motion.div>

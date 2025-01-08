@@ -64,8 +64,8 @@ const Vibe = () => {
             variants={fadeInUp}
             className="max-w-lg lg:text-xl text-base text-zinc-700 leading-relaxed"
           >
-            Students have projects, and entrepreneurs have ideas, but they're
-            struggling to find the squad to bring it all to life.
+            Students have projects, and entrepreneurs have ideas, but
+            they&apos;re struggling to find the squad to bring it all to life.
           </motion.p>
         </motion.div>
 
@@ -81,7 +81,7 @@ const Vibe = () => {
             whileHover={{ scale: 1.02 }}
             className="text-white p-8 bg-[#FF0505] max-w-lg text-2xl shadow-lg rounded-lg transform hover:shadow-xl transition-all duration-300 border-4 border-white"
           >
-            Let's be real, traditional collab methods are a total drag:
+            Let&apos;s be real, traditional collab methods are a total drag:
             time-consuming and just plain boring
           </motion.div>
         </motion.div>
