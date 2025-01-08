@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import NumberTicker from "@/components/ui/number-ticker";
 import { Linkedin } from "lucide-react";
+import { useRef } from "react";
 
 const teamMembers = [
   {
@@ -40,6 +41,11 @@ const teamMembers = [
 ];
 
 export default function AboutPage() {
+  const scrollUpRef = useRef<HTMLDivElement>(null);
+  const scrollUp = () => {
+    scrollUpRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -47,7 +53,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="pt-16 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-gray-900">
+          <h1
+            ref={scrollUpRef}
+            className="text-4xl sm:text-5xl font-bold mb-8 text-gray-900"
+          >
             About Inovact
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed mb-12">
@@ -204,7 +213,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer scrollUp={scrollUp} scrollUpEffort={() => {}} />
     </div>
   );
 }
