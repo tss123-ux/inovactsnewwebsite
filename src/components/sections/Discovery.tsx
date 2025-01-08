@@ -160,8 +160,8 @@ const Discovery = () => {
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
                 Explore, learn, and upskill by checking out projects and ideas
-                from other members of our social network. It's like a treasure
-                chest of knowledge!
+                from other members of our social network. It&apos;s like a
+                treasure chest of knowledge!
               </p>
             </motion.div>
 
