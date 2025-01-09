@@ -44,11 +44,12 @@ const Vibe = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="max-w-7xl mx-auto overflow-x-hidden w-full flex items-center justify-between py-14 lg:py-28 flex-col p-6"
+      className="max-w-7xl mx-auto w-full p-6 lg:px-8 flex items-center justify-between py-14 lg:py-0 flex-col "
     >
+      {/* overflow-x-hidden */}
       <motion.div
         variants={staggerChildren}
-        className="flex flex-row lg:flex-nowrap flex-wrap items-start justify-start gap-20 w-full"
+        className="flex flex-row lg:flex-nowrap flex-wrap items-start justify-start gap-10 lg:gap-20 w-full"
       >
         <motion.div
           variants={fadeInUp}
@@ -56,7 +57,7 @@ const Vibe = () => {
         >
           <motion.h2
             variants={scaleIn}
-            className="lg:text-6xl text-4xl text-[#FF0505] font-bold text-balance max-w-lg leading-[1.3] tracking-tight"
+            className="lg:text-6xl text-4xl text-[#FF0505] text-left font-medium text-balance max-w-lg leading-[1.3] tracking-tight"
           >
             Vibe Check: The Problem
           </motion.h2>
@@ -69,17 +70,21 @@ const Vibe = () => {
           </motion.p>
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="lg:w-1/2 relative">
+        <motion.div
+          variants={fadeInUp}
+          whileHover={{ scale: 1.02 }}
+          className="lg:w-1/2 relative"
+        >
           <motion.div
             variants={rotateIn}
-            className="text-[#FF0505] text-8xl font-bold absolute -top-8 left-0 transform -rotate-12"
+            className="text-gray-200 drop-shadow-lg  z-10  text-8xl font-bold absolute -top-10 left-0 transform -rotate-12"
           >
             #
           </motion.div>
           <motion.div
             variants={fadeInUp}
-            whileHover={{ scale: 1.02 }}
-            className="text-white p-8 bg-[#FF0505] max-w-lg text-2xl shadow-lg rounded-lg transform hover:shadow-xl transition-all duration-300 border-4 border-white"
+            // whileHover={{ scale: 1.02 }}
+            className="text-white p-8 bg-[#FF0505] max-w-lg text-lg sm:text-2xl shadow-lg rounded-lg transform hover:shadow-xl transition-all duration-300 border-4 border-white"
           >
             Let&apos;s be real, traditional collab methods are a total drag:
             time-consuming and just plain boring

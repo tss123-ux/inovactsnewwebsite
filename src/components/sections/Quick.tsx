@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const Quick = () => {
-  // Main container animation
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,12 +15,11 @@ const Quick = () => {
     },
   };
 
-  // Video container animation
-  const videoVariants = {
+  const videoContainerVariants = {
     hidden: {
       opacity: 0,
-      x: 50,
-      rotate: 5,
+      x: 100,
+      rotate: 10,
     },
     visible: {
       opacity: 1,
@@ -31,34 +29,54 @@ const Quick = () => {
         type: "spring",
         stiffness: 100,
         damping: 15,
+        duration: 0.8,
       },
     },
   };
 
-  // Image animations
-  const imageVariants = {
+  const topImageVariants = {
     hidden: {
       opacity: 0,
-      scale: 0.9,
+      scale: 0.7,
       y: 30,
+      rotate: -15,
     },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
+      rotate: 0,
       transition: {
         type: "spring",
-        stiffness: 150,
+        stiffness: 200,
         damping: 20,
+        duration: 0.8,
       },
-    },
-    hover: {
-      scale: 1.03,
-      transition: { duration: 0.3 },
     },
   };
 
-  // Text content animation
+  const bottomImageVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      rotate: 10,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 150,
+        damping: 15,
+        duration: 0.8,
+        delay: 0.3,
+      },
+    },
+  };
+
   const textVariants = {
     hidden: {
       opacity: 0,
@@ -75,101 +93,93 @@ const Quick = () => {
   };
 
   return (
-    <motion.div
+    <motion.section
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="flex w-screen lg:items-center lg:justify-center items-start justify-start lg:flex-row-reverse flex-col p-6 max-lg:my-5 overflow-hidden"
+      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-48 bg-white"
     >
-      {/* Mobile Image */}
-      <motion.div
-        variants={imageVariants}
-        whileHover="hover"
-        className="lg:hidden block w-full"
-      >
-        <Image
-          src="/images/15.svg"
-          width={700}
-          height={400}
-          alt=""
-          className="w-full"
-        />
-      </motion.div>
-
-      {/* Video Section */}
-      <motion.div
-        variants={videoVariants}
-        className="lg:w-1/3 max-lg:mx-auto flex items-center justify-center"
-      >
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl transform rotate-3 scale-105" />
-          <div
-            className="relative bg-white rounded-2xl shadow-xl overflow-hidden"
-            dangerouslySetInnerHTML={{
-              __html: `
-                <video width="300" autoPlay loop playsinline muted preload="auto" height="820" class="lg:w-[300px] w-[250px] p-4">
-                  <source src="/videos/join.mp4" type="video/mp4"/>
-                </video>
-              `,
-            }}
-          />
-        </div>
-      </motion.div>
-
-      {/* Content Section */}
-      <div className="lg:max-w-[50%]">
-        <div className="flex flex-col py-10 gap-8 lg:items-center lg:justify-center">
-          {/* Desktop Image */}
+      <div className="max-w-7xl w-full lg:flex lg:gap-12 relative z-10">
+        {/* Left Column - Content */}
+        <div className="lg:w-1/2 w-full flex flex-col justify-center space-y-8 relative z-20">
           <motion.div
-            variants={imageVariants}
-            whileHover="hover"
-            className="lg:block hidden"
+            variants={topImageVariants}
+            className="relative w-full max-w-lg mx-auto"
           >
             <Image
               src="/images/15.svg"
               width={700}
               height={400}
-              alt=""
-              className="w-[550px]"
+              alt="Quick join illustration"
+              className="w-full transform hover:scale-105 transition-transform duration-300"
+              priority
             />
           </motion.div>
 
-          {/* Text Content */}
-          <motion.h2
-            variants={textVariants}
-            className="lg:text-5xl text-4xl lg:text-left lg:mr-auto text-[#1649FF] text-balance leading-[1.3] font-bold"
-          >
-            Quick Join
-          </motion.h2>
-
           <motion.div
             variants={textVariants}
-            className="lg:max-w-[400px] mr-auto"
+            className="text-center lg:text-left space-y-4"
           >
-            <p className="text-balance text-left lg:mr-auto text-zinc-700 text-lg leading-relaxed">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl  text-left font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+              Quick Join
+            </h2>
+            <p className="lg:text-lg text-justify sm:text-start max-w-2xl mx-auto lg:mx-0 text-base text-zinc-700 leading-relaxed">
               Dive into projects and ideas that spark your interest with a
               single tap. No more wasting time!
             </p>
           </motion.div>
 
-          {/* Bottom Image */}
           <motion.div
-            variants={imageVariants}
-            whileHover="hover"
-            className="w-full"
+            variants={bottomImageVariants}
+            className="relative w-full max-w-lg mx-auto"
           >
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform" />
             <Image
               src="/images/16.svg"
               width={700}
               height={400}
-              alt=""
-              className="lg:w-[550px] w-full"
+              alt="Quick join process"
+              className="relative w-full hover:scale-105 transition-transform duration-300"
+              priority
             />
           </motion.div>
         </div>
+
+        {/* Right Column - Video */}
+        <motion.div
+          variants={videoContainerVariants}
+          className="lg:w-1/2 w-full flex items-center justify-center relative z-20"
+        >
+          <div className="relative p-4 w-full ">
+            {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl transform rotate-3 scale-105 -z-10" /> */}
+            {/* <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden"> */}
+            <div
+              className="relative z-10"
+              dangerouslySetInnerHTML={{
+                __html: `
+                    <video 
+                      width="380" 
+                      height="600" 
+                      class="w-full max-w-[380px] h-[600px] p-4 mx-auto" 
+                      playsinline 
+                      autoplay 
+                      loop 
+                      muted 
+                      preload="auto" 
+                      data-wf-ignore="true" 
+                      data-object-fit="cover"
+                    >
+                      <source src="/videos/join.mp4" type="video/mp4"/>
+                    </video>
+                  `,
+              }}
+            />
+            {/* </div> */}
+          </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

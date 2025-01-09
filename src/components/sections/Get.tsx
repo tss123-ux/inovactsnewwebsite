@@ -39,7 +39,7 @@ const Get = () => {
 
   return (
     <motion.div
-      className="max-w-7xl mx-auto flex flex-col justify-between items-center px-5 gap-10 py-12 my-20"
+      className="max-w-7xl mx-auto flex flex-col justify-between items-center px-5 gap-10 py-12 my-20 lg:mb-48"
       initial="hidden"
       animate="visible"
       variants={{
@@ -47,16 +47,16 @@ const Get = () => {
       }}
     >
       <motion.h2
-        className="text-transparent bg-clip-text bg-gradient-to-r from-[#1649FF] to-[#0D2C99] lg:text-7xl text-4xl font-semibold text-center"
+        className="text-transparent bg-clip-text bg-gradient-to-r from-[#1649FF] to-[#0D2C99] lg:text-6xl sm:text-4xl text-2xl w-full font-medium text-left md:text-center"
         variants={headingVariants}
       >
         Get Inovact Social Now
       </motion.h2>
       <motion.p
-        className="lg:text-xl text-sm text-center lg:max-w-2xl text-gray-600"
+        className="lg:text-lg text-justify sm:text-center max-w-2xl mx-auto lg:mx-0 text-base text-zinc-700 leading-relaxed"
         variants={paragraphVariants}
       >
-        Get in on the action with 3000+ students and entrepreneurs already
+        Get in on the action with 5000+ students and entrepreneurs already
         making waves with their projects and ideas. Join us now and be a part of
         the future.
       </motion.p>
@@ -71,7 +71,7 @@ const Get = () => {
               width={1000}
               height={1000}
               alt="Inovact Social App"
-              className="h-auto w-[250px] rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105"
+              className="h-auto w-[180px] sm:w-[250px] rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105"
             />
           </div>
         </Link>

@@ -79,7 +79,7 @@ const Navbar = () => {
             whileHover="hover"
             className="flex items-center space-x-3"
           >
-            <Link href={"/"} className="flex items-center gap-3 group">
+            <Link href={"/"} className="flex items-center gap-1 group">
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
@@ -92,13 +92,13 @@ const Navbar = () => {
                   className="rounded-full shadow-md hover:shadow-lg transition-shadow duration-300"
                 />
               </motion.div>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1649FF] to-[#0D2C99] font-semibold text-sm sm:text-base lg:text-lg xl:text-xl transition-all duration-300 ease-in-out">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1649FF] to-[#0D2C99]  text-sm sm:text-base lg:text-lg xl:text-xl transition-all duration-300 ease-in-out">
                 Inovact Private Limited
               </span>
             </Link>
           </motion.div>
 
-          <div className="flex items-center space-x-6 sm:space-x-8">
+          <div className="flex items-center  sm:space-x-8">
             <motion.div
               variants={navItemVariants}
               initial="hidden"
@@ -143,7 +143,7 @@ const Navbar = () => {
                     width={120}
                     height={120}
                     alt="Play Store"
-                    className="w-auto h-auto"
+                    className=""
                   />
                 </motion.div>
               </Link>

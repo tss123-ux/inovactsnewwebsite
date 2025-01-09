@@ -76,18 +76,19 @@ const Loyal = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="mt-48 lg:mt-[330px] lg:py-20 max-w-[100vw] overflow-hidden mx-auto"
+      className="mt-48 mb-10 sm:mb-0 lg:my-[330px] lg:mb-[200px] lg:py-20 max-w-[100vw] overflow-hidden mx-auto"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent" /> */}
 
       <div className="relative z-10 flex flex-col items-center">
         <motion.div
           variants={headingVariants}
-          className="text-center mb-12 px-4"
+          className="text-center sm:mb-10 px-4"
         >
-          <h2 className="lg:text-4xl text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-            Members on Inovact Social come from
+          <h2 className="lg:text-4xl text-2xl   bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+            Members on Inovact Social{" "}
+            <span className="hidden sm:inline-block">come from</span>
           </h2>
           <motion.div
             initial={{ width: 0 }}
@@ -120,7 +121,7 @@ const Loyal = () => {
                       width={200}
                       height={200}
                       alt="Company logo"
-                      className="lg:w-[200px] aspect-square object-contain lg:h-[120px] w-[70px] h-[70px] filter grayscale hover:grayscale-0 transition-all duration-300"
+                      className="lg:w-[200px] aspect-square object-contain lg:h-[120px] w-[70px] h-[70px] filter  hover:grayscale-0 transition-all duration-300"
                     />
                   </motion.div>
                 ))}

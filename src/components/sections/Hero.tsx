@@ -1,9 +1,88 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import { Youtube } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaYoutube } from "react-icons/fa";
 const Hero = () => {
+  const words = ["proof", "of", "work"];
+  const [startAnimation, setStartAnimation] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStartAnimation(true);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    let currentIndex = 0;
+    // Calculate total length including spaces
+    const totalLength = words.join(" ").length;
+
+    const interval = setInterval(() => {
+      if (currentIndex >= totalLength) {
+        clearInterval(interval);
+        return;
+      }
+      setActiveIndex(currentIndex);
+      currentIndex++;
+    }, 150);
+
+    return () => clearInterval(interval);
+  }, [startAnimation]);
+
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const letterVariants = {
+    normal: {
+      scale: 1,
+      color: "transparent",
+      backgroundImage: "linear-gradient(to right, #60A5FA, #818CF8)",
+      backgroundClip: "text",
+    },
+    active: {
+      scale: [1, 1.2, 1],
+      color: ["transparent", "#fff", "#fff"],
+      backgroundImage: [
+        "linear-gradient(to right, #60A5FA, #818CF8)",
+        "none",
+        "none",
+      ],
+      transition: {
+        duration: 0.3,
+        color: { duration: 0.3 },
+        backgroundImage: { duration: 0.3 },
+      },
+    },
+  };
+
+  // Function to determine if a letter should be animated
+  const shouldAnimate = (wordIndex: any, letterIndex: any) => {
+    const previousWordsLength = words
+      .slice(0, wordIndex)
+      .reduce((acc, word) => acc + word.length + 1, 0); // +1 for space
+    const currentPosition = previousWordsLength + letterIndex;
+    return currentPosition <= activeIndex;
+  };
+
   // Background reveal animation
   const backgroundVariants = {
     hidden: { opacity: 0 },
@@ -56,15 +135,29 @@ const Hero = () => {
   };
 
   // Heading text animation (word by word)
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
+  // const textVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       duration: 0.8,
+  //       ease: "easeOut",
+  //       delay: 0.4,
+  //     },
+  //   },
+  // };
+
+  const textVariant = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        delay: 0.4,
+        duration: 0.6,
       },
     },
   };
@@ -106,7 +199,7 @@ const Hero = () => {
       variants={backgroundVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[110vh] bg-[url('/images/2.svg')] bg-center bg-cover min-h-[600px] w-full "
+      className="relative h-[96vh] lg:h-[110vh] bg-[url('/images/2.svg')] bg-center bg-cover min-h-[600px] w-full "
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 mix-blend-overlay" />
@@ -127,11 +220,8 @@ const Hero = () => {
             >
               <div className="bg-white/95 backdrop-blur-sm rounded-full text-indigo-600 flex items-center gap-3 px-6 py-3 shadow-lg transition-all duration-300 hover:bg-white">
                 <motion.div whileHover={iconHoverVariants.hover}>
-                  <Image
-                    src="/images/3.svg"
-                    alt="Launch icon"
-                    width={30}
-                    height={30}
+                  <FaYoutube
+                    color="#da0707"
                     className="lg:w-[30px] lg:h-[30px] w-[20px] h-[20px]"
                   />
                 </motion.div>
@@ -147,12 +237,30 @@ const Hero = () => {
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="text-center font-bold text-balance lg:text-5xl text-2xl leading-relaxed text-white max-w-3xl"
+            className="text-center text-balance lg:text-5xl text-2xl leading-relaxed text-white max-w-3xl"
           >
-            A social network for students and entrepreneurs powered by
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              {" "}
-              proof of work
+            A social network for students and entrepreneurs powered by{" "}
+            <span className="inline-block">
+              {words.map((word, wordIndex) => (
+                <React.Fragment key={wordIndex}>
+                  {wordIndex > 0 && " "}
+                  {word.split("").map((letter, letterIndex) => (
+                    <motion.span
+                      key={`${wordIndex}-${letterIndex}`}
+                      variants={letterVariants}
+                      initial="normal"
+                      animate={
+                        shouldAnimate(wordIndex, letterIndex)
+                          ? "active"
+                          : "normal"
+                      }
+                      className="inline-block bg-clip-text"
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </React.Fragment>
+              ))}
             </span>
           </motion.h1>
 

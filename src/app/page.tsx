@@ -93,7 +93,7 @@ const Page = () => {
       <App />
       {/* </AnimatedSection> */}
       {/* <AnimatedSection> */}
-      <MarqueeText />
+      {/* <MarqueeText /> */}
 
       <div ref={effortref}>
         <Effortless />

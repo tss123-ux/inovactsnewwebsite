@@ -72,7 +72,7 @@ const FAQ = () => {
   return (
     <motion.div
       ref={sectionRef}
-      className="my-20 lg:my-32 flex flex-col items-center justify-center px-4 lg:px-8 mx-auto max-w-7xl relative"
+      className="my-14 lg:my-32 flex flex-col items-center justify-center px-4 lg:px-8 mx-auto max-w-7xl relative lg:mb-48"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
@@ -166,7 +166,7 @@ const FAQ = () => {
               }}
             >
               <div
-                className="cursor-pointer text-xl font-semibold text-[#1649FF] flex justify-between items-center"
+                className="cursor-pointer text-base md:text-xl  text-[#1649FF] flex justify-between items-center"
                 onClick={() => toggleFaq(index)}
               >
                 <span>{faq.question}</span>
@@ -175,7 +175,7 @@ const FAQ = () => {
                 </span>
               </div>
               <motion.div
-                className="mt-2 text-gray-600"
+                className="mt-2 text-sm sm:text-base text-justify text-zinc-700 leading-relaxed"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{
                   height: activeIndex === index ? "auto" : 0,

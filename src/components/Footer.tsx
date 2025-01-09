@@ -31,8 +31,10 @@ const Footer = ({
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-7 p-2">
         <motion.div variants={fadeInUpVariants}>
-          <h2 className="text-2xl font-medium mb-2">Inovact Private Limited</h2>
-          <p>
+          <h2 className="text-xl sm:text-2xl font-medium mb-2">
+            Inovact Private Limited
+          </h2>
+          <p className="text-sm sm:text-base">
             Address: #731, E & F Block, Kuvempunagar, Mysore - 570023
             <br /> Email: inovacteam@gmail.com
             <br /> Phone: +91 8296024720
@@ -43,22 +45,22 @@ const Footer = ({
           className="flex flex-col md:flex-row gap-5"
         >
           <div>
-            <h2 className="text-2xl font-medium mb-2">Company</h2>
+            <h2 className="text-xl sm:text-2xl font-medium mb-2">Company</h2>
             <Link href="/about">
-              <h3 className="hover:text-gray-300 transition-colors">
+              <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors">
                 About Us
               </h3>
             </Link>
           </div>
           <div>
-            <h2 className="text-2xl font-medium mb-2">Product</h2>
+            <h2 className="text-xl sm:text-2xl font-medium mb-2">Product</h2>
             <div onClick={scrollUpEffort}>
-              <h3 className="hover:text-gray-300 transition-colors cursor-pointer">
+              <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors cursor-pointer">
                 Features
               </h3>
             </div>
             <div onClick={scrollUp}>
-              <h3 className="hover:text-gray-300 transition-colors cursor-pointer">
+              <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors cursor-pointer">
                 Join community
               </h3>
             </div>
@@ -66,7 +68,7 @@ const Footer = ({
         </motion.div>
         <motion.div
           variants={popOutVariants}
-          className="md:static absolute top-5 right-5"
+          className="md:static absolute right-5 top-[39vh] lg:top-5 lg:right-5 "
           onClick={scrollUp}
         >
           <svg
@@ -87,7 +89,7 @@ const Footer = ({
       </div>
       <div className="max-w-7xl mx-auto items-center justify-center mt-10">
         <motion.div variants={fadeInUpVariants}>
-          <div className="text-4xl text-center my-10">
+          <div className="text-2xl font-medium lg:text-4xl text-center my-10">
             @Join Inovact community
           </div>
           <div className="flex items-center justify-center gap-10 flex-wrap">

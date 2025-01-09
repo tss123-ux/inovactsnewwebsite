@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const Effortless = () => {
-  // Container animation with subtle scale and fade
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,7 +15,6 @@ const Effortless = () => {
     },
   };
 
-  // Video container animation
   const videoContainerVariants = {
     hidden: {
       opacity: 0,
@@ -36,7 +34,6 @@ const Effortless = () => {
     },
   };
 
-  // Top image pop and rotate animation
   const topImageVariants = {
     hidden: {
       opacity: 0,
@@ -58,7 +55,6 @@ const Effortless = () => {
     },
   };
 
-  // Bottom image slide and scale animation
   const bottomImageVariants = {
     hidden: {
       opacity: 0,
@@ -81,7 +77,6 @@ const Effortless = () => {
     },
   };
 
-  // Text animations
   const textVariants = {
     hidden: {
       opacity: 0,
@@ -103,32 +98,29 @@ const Effortless = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+      className="min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-48 mb-16"
     >
-      <div className="max-w-7xl w-full space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12">
+      <div className="max-w-7xl w-full lg:flex lg:gap-12">
         {/* Left Column */}
         <motion.div
           variants={videoContainerVariants}
-          className="relative flex flex-col items-center lg:items-end justify-center"
+          className="lg:w-1/2 w-full flex items-center justify-center"
         >
-          <div className="relative w-full max-w-md">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl transform rotate-6 scale-105" />
-            <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden h-fit">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    <video class="w-full scale-75" playsinline autoplay loop muted preload="auto" data-wf-ignore="true" data-object-fit="cover">
-                      <source src="/videos/look.mp4" type="video/mp4"/>
-                    </video>
-                  `,
-                }}
-              />
-            </div>
+          <div className="relative p-4">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <video width="380" height="600" class="w-[380px] h-[600px] p-4" playsinline autoplay loop muted preload="auto" data-wf-ignore="true" data-object-fit="cover">
+                    <source src="/videos/look.mp4" type="video/mp4"/>
+                  </video>
+                `,
+              }}
+            />
           </div>
         </motion.div>
 
         {/* Right Column */}
-        <div className="relative flex flex-col justify-center space-y-8">
+        <div className="lg:w-1/2 w-full flex flex-col justify-center space-y-8">
           <motion.div
             variants={topImageVariants}
             className="relative w-full max-w-lg mx-auto"
@@ -146,12 +138,12 @@ const Effortless = () => {
             variants={textVariants}
             className="text-center lg:text-left space-y-4"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl  text-left font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
               Seamless Collaboration:
               <br />
               <span className="text-gray-800">Find Your Crew</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0">
+            <p className="lg:text-lg max-w-2xl text-justify sm:text-start mx-auto lg:mx-0 text-base text-zinc-700 leading-relaxed">
               Find a teammate or co-founder for your project or idea in just two
               steps—easy peasy! Connect with like-minded innovators and bring
               your vision to life.
@@ -162,7 +154,7 @@ const Effortless = () => {
             variants={bottomImageVariants}
             className="relative w-full max-w-lg mx-auto"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform -rotate-3" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform" />
             <Image
               src="/images/13.svg"
               width={700}

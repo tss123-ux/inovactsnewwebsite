@@ -71,12 +71,12 @@ const Banner = () => {
 
         <div className="relative bg-gradient-to-r from-[#25D366]/90 to-[#128C7E]/90 py-4 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-center gap-4 sm:gap-6 lg:gap-10">
+            <div className="flex items-center justify-center gap-2 sm:gap-4 ">
               <div className="flex items-center space-x-2">
                 <motion.span
-                  variants={sparkleVariants}
-                  initial="initial"
-                  animate="animate"
+                  // variants={sparkleVariants}
+                  // initial="initial"
+                  // animate="animate"
                   className="text-yellow-300 text-xl"
                 >
                   ✨
@@ -84,7 +84,7 @@ const Banner = () => {
                 <p className="text-white font-medium text-xs sm:text-sm lg:text-base">
                   Join the Inovact WhatsApp Community and vibe with over 2000{" "}
                   <FlipWords
-                    className="w-[9rem] inline-block text-white"
+                    className="w-[9rem] inline-block text-white text-left"
                     words={[
                       "students",
                       "developers",
@@ -103,7 +103,7 @@ const Banner = () => {
                   className="hidden lg:block"
                 >
                   <motion.button
-                    className="bg-white text-[#25D366] px-8 py-2 rounded-xl font-medium 
+                    className="bg-white text-indigo-600 px-8 py-2 rounded-xl font-medium 
                              transform transition-all duration-300 hover:bg-opacity-90
                              focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
                   >
@@ -116,7 +116,7 @@ const Banner = () => {
         </div>
 
         {/* Mobile Join Button - Shows only on small screens */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="lg:hidden fixed bottom-4 right-4 z-50"
@@ -129,7 +129,7 @@ const Banner = () => {
           >
             Join now
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </Link>
   );

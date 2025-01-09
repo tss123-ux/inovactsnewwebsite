@@ -1,14 +1,15 @@
-import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import React from "react";
 
 const Rewarded = () => {
-  // Keeping the same animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         duration: 0.8,
+        ease: "easeOut",
         staggerChildren: 0.2,
       },
     },
@@ -17,8 +18,8 @@ const Rewarded = () => {
   const videoContainerVariants = {
     hidden: {
       opacity: 0,
-      x: -40,
-      rotate: -4,
+      x: -100,
+      rotate: -10,
     },
     visible: {
       opacity: 1,
@@ -36,28 +37,42 @@ const Rewarded = () => {
   const topImageVariants = {
     hidden: {
       opacity: 0,
-      scale: 0.8,
-      x: 30,
-      rotate: 8,
+      scale: 0.7,
+      y: 30,
+      rotate: -15,
     },
     visible: {
       opacity: 1,
       scale: 1,
-      x: 0,
+      y: 0,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 20,
+        duration: 0.8,
+      },
+    },
+  };
+
+  const bottomImageVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      rotate: 10,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
       rotate: 0,
       transition: {
         type: "spring",
         stiffness: 150,
-        damping: 20,
-      },
-    },
-    hover: {
-      scale: 1.05,
-      rotate: -4,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 25,
+        damping: 15,
+        duration: 0.8,
+        delay: 0.3,
       },
     },
   };
@@ -71,151 +86,97 @@ const Rewarded = () => {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-      },
-    },
-  };
-
-  const bottomImageVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.9,
-      y: 30,
-      rotate: -6,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      rotate: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        delay: 0.2,
-      },
-    },
-    hover: {
-      scale: 1.03,
-      rotate: 3,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 25,
+        duration: 0.6,
+        ease: "easeOut",
       },
     },
   };
 
   return (
-    <motion.div
+    <motion.section
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      className="min-h-screen w-full py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50"
+      viewport={{ once: true, margin: "-100px" }}
+      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-48 mb-32 bg-white"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Mobile Image */}
+      <div className="max-w-7xl w-full lg:flex lg:gap-12 relative z-10">
+        {/* Left Column - Video */}
+        <motion.div
+          variants={videoContainerVariants}
+          className="lg:w-1/2 w-full flex items-center justify-center relative z-20"
+        >
+          <div className="relative p-4 w-full">
+            <div className="relative z-10">
+              <video
+                width="380"
+                height="600"
+                className="w-full max-w-[380px] h-[600px] p-4 mx-auto"
+                playsInline
+                autoPlay
+                loop
+                muted
+                preload="auto"
+              >
+                <source src="/videos/win.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Right Column - Content */}
+        <div className="lg:w-1/2 w-full flex flex-col justify-center space-y-8 relative z-20">
           <motion.div
             variants={topImageVariants}
-            whileHover="hover"
-            className="lg:hidden w-[60%] ml-auto mr-10"
+            className="relative w-full max-w-lg mx-auto"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-indigo-50 rounded-xl transform -rotate-2" />
-              <img
-                src="/images/23.svg"
-                alt="Reward graphic"
-                className="relative w-full rounded-lg"
-              />
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-indigo-50 rounded-xl transform" />
+            <Image
+              src="/images/23.svg"
+              width={700}
+              height={400}
+              alt="Rewards illustration"
+              className="w-full transform hover:scale-105 transition-transform duration-300 relative"
+              priority
+            />
           </motion.div>
 
-          {/* Video Section - Fixed width issues */}
           <motion.div
-            variants={videoContainerVariants}
-            className="w-auto lg:w-1/3 flex justify-center" // Changed width handling
+            variants={textVariants}
+            className="text-center lg:text-left space-y-4"
           >
-            <div className="relative w-fit">
-              {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl transform rotate-2 scale-105" /> */}
-              <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `
-                      <video
-                        class="w-[250px] lg:w-[300px] lg:ml-28 p-4" 
-                        playsinline
-                        autoplay
-                        loop
-                        muted
-                        preload="auto"
-                      >
-                        <source src="/videos/win.mp4" type="video/mp4" />
-                      </video>
-                    `,
-                  }}
-                />
-              </div>
-            </div>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl  text-left font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+              Get Rewarded
+            </h2>
+            <p className="lg:text-lg text-justify sm:text-start max-w-2xl mx-auto lg:mx-0 text-base text-zinc-700 leading-relaxed">
+              Interact on the app to rack up points and snag some cool
+              incentives. Think discounts and even opportunities for internships
+              and jobs.
+              <br />
+              <br />
+              <span className="font-medium text-indigo-600 sm:text-base text-sm">
+                - This feature is dropping soon, so stay tuned!
+              </span>
+            </p>
           </motion.div>
 
-          {/* Content Section */}
-          <div className="lg:w-2/3 space-y-8">
-            {/* Desktop Top Image */}
-            <motion.div
-              variants={topImageVariants}
-              whileHover="hover"
-              className="hidden lg:block max-w-[250px] ml-auto mr-10"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-indigo-50 rounded-xl transform -rotate-1" />
-                <img
-                  src="/images/23.svg"
-                  alt="Reward graphic"
-                  className="relative w-full rounded-lg"
-                />
-              </div>
-            </motion.div>
-
-            {/* Text Content */}
-            <motion.div variants={textVariants} className="lg:ml-40 space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                Get Rewarded
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Interact on the app to rack up points and snag some cool
-                incentives. Think discounts and even opportunities for
-                internships and jobs.
-                <br />
-                <br />
-                <span className="font-medium text-indigo-600">
-                  - This feature is dropping soon, so stay tuned!
-                </span>
-              </p>
-            </motion.div>
-
-            {/* Bottom Image */}
-            <motion.div
-              variants={bottomImageVariants}
-              whileHover="hover"
-              className="hidden lg:block max-w-[450px] mx-auto"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl transform rotate-1" />
-                <img
-                  src="/images/24.svg"
-                  alt="Additional reward graphic"
-                  className="relative w-full rounded-lg"
-                />
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            variants={bottomImageVariants}
+            className="relative w-full max-w-lg mx-auto"
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform" />
+            <Image
+              src="/images/24.svg"
+              width={700}
+              height={400}
+              alt="Additional rewards illustration"
+              className="relative w-full hover:scale-105 transition-transform duration-300"
+              priority
+            />
+          </motion.div>
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

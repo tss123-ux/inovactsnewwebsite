@@ -51,15 +51,15 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-16 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="pt-16 pb-10 sm:pb-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-5xl mx-auto text-center">
           <h1
             ref={scrollUpRef}
-            className="text-4xl sm:text-5xl font-bold mb-8 text-gray-900"
+            className="text-3xl sm:text-4xl sm:text-center text-left  font-medium mb-8 text-gray-900"
           >
             About Inovact
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed mb-12">
+          <p className="text-lg text-justify sm:text-center sm:text-xl text-gray-600 leading-relaxed mb-12">
             Founded in 2021, Inovact is reshaping how students connect,
             collaborate, and create through innovative solutions and
             community-driven development.
@@ -68,12 +68,12 @@ export default function AboutPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
+      <section className="py-16 pt-0 sm:pt-0 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
           <div className="space-y-12">
             {/* Our Story */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6">
                 Our Story
               </h2>
               <div className="prose prose-lg">
@@ -96,7 +96,7 @@ export default function AboutPage() {
 
             {/* Our Mission */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6">
                 Our Mission
               </h2>
               <Card className="bg-gray-50">
@@ -115,39 +115,45 @@ export default function AboutPage() {
 
             {/* Our Impact */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6">
                 Our Impact
               </h2>
               <div className="grid sm:grid-cols-3 gap-6 mb-8">
                 <div className="bg-muted shadow-2xl p-6 rounded-lg  border border-gray-100">
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
+                    <NumberTicker
+                      className="text-3xl font-bold text-indigo-600 mb-2 "
+                      value={5200}
+                    />
+                    +
+                  </div>
+                  <div className="text-gray-600 sm:text-base text-sm text-center">
+                    Students, Entrepreneurs and Mentors
+                  </div>
+                </div>
+                <div className="bg-muted shadow-2xl p-6 rounded-lg  border border-gray-100">
+                  <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
                     <NumberTicker
                       className="text-3xl font-bold text-indigo-600 mb-2"
                       value={2000}
                     />
                     +
                   </div>
-                  <div className="text-gray-600">Students Trained</div>
+                  <div className="text-gray-600 sm:text-base text-sm text-center">
+                    Community Members
+                  </div>
                 </div>
                 <div className="bg-muted shadow-2xl p-6 rounded-lg  border border-gray-100">
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
                     <NumberTicker
                       className="text-3xl font-bold text-indigo-600 mb-2"
-                      value={1500}
+                      value={350}
                     />
                     +
                   </div>
-                  <div className="text-gray-600">Community Members</div>
-                </div>
-                <div className="bg-muted shadow-2xl p-6 rounded-lg  border border-gray-100">
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">
-                    <NumberTicker
-                      className="text-3xl font-bold text-indigo-600 mb-2"
-                      value={100}
-                    />
-                    +
+                  <div className="text-gray-600 sm:text-base text-sm text-center">
+                    Projects Launched
                   </div>
-                  <div className="text-gray-600">Projects Launched</div>
                 </div>
               </div>
             </div>
@@ -157,10 +163,10 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-3">
-              Our Leadership Team
+            <h2 className="text-2xl font-medium text-gray-900 mb-3">
+              Our Young Team
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Meet the talented individuals driving innovation and growth at
@@ -168,41 +174,42 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-            {teamMembers.map((member) => (
-              <div key={member.name} className="group">
-                <Card className="overflow-hidden bg-white transition-all duration-300 hover:shadow-lg">
-                  <CardContent className="p-0">
-                    <div className="relative aspect-[3/4] overflow-hidden">
-                      {/* Background Image */}
-                      <TeamMember {...member} />
+          <div className="flex flex-wrap justify-center gap-8">
+            {teamMembers.map((member, index) => (
+              <div key={member.name} className="w-64">
+                <Card className="relative overflow-hidden bg-white">
+                  {/* LinkedIn Icon - Only show for first member */}
+                  {index === 0 && member.linkedinUrl && (
+                    <a
+                      href={member.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-3 right-3 z-10 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
+                    >
+                      <Linkedin className="w-5 h-5 text-blue-600" />
+                    </a>
+                  )}
 
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                      {/* LinkedIn Icon */}
-                      {member.linkedinUrl && (
-                        <div className="absolute top-3 right-3 transform translate-y-[-150%] group-hover:translate-y-0 transition-transform duration-300">
-                          <a
-                            href={member.linkedinUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white/90 p-1.5 rounded-full shadow-lg hover:bg-white transition-colors duration-200"
-                          >
-                            <Linkedin className="w-4 h-4 text-blue-600" />
-                          </a>
+                  <CardContent className="p-4">
+                    <div className="flex flex-col items-center">
+                      {/* Circular Image */}
+                      <div className="relative w-48 h-48 mb-4">
+                        <div className="w-full h-full rounded-full overflow-hidden">
+                          <img
+                            src={member.imageUrl}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                      )}
+                      </div>
 
                       {/* Info Section */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-white/5 backdrop-blur-sm translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300">
-                        <div className="space-y-1">
-                          <h3 className="text-lg font-semibold text-white">
-                            {member.name}
-                          </h3>
-                          <p className="text-sm text-gray-200">{member.role}</p>
-                          <div className="h-0.5 w-8 bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                        </div>
+                      <div className="text-center">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                          {member.name}
+                        </h3>
+                        <p className="text-sm text-gray-600">{member.role}</p>
+                        <div className="h-0.5 w-8 bg-indigo-400 mx-auto mt-2" />
                       </div>
                     </div>
                   </CardContent>

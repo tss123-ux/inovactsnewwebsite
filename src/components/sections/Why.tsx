@@ -102,21 +102,21 @@ const Why = () => {
 
   return (
     <motion.div
-      className="my-20 flex flex-col gap-8 items-center max-w-7xl mx-auto px-4 lg:px-8"
+      className="my-12 flex flex-col gap-6 items-center max-w-6xl mx-auto px-4 lg:px-6 lg:mb-32 mb-32"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <motion.div
-        className="bg-[#1649FF] text-white px-10 py-4 rounded-full w-max flex gap-3 text-xl items-center shadow-lg hover:shadow-xl transition-shadow duration-300"
+        className="bg-[#1649FF] text-white px-8 py-3 rounded-full w-max flex gap-3 text-lg items-center shadow-lg hover:shadow-xl transition-shadow duration-300"
         variants={buttonVariants}
         initial="initial"
         whileHover="hover"
         whileTap="tap"
       >
         <motion.svg
-          width="33"
-          height="32"
+          width="28"
+          height="28"
           viewBox="0 0 33 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -132,10 +132,10 @@ const Why = () => {
         Why Inovact Social?
       </motion.div>
 
-      <div className="w-full grid lg:grid-cols-2 gap-6 lg:gap-8">
+      <div className="w-full grid lg:grid-cols-2 gap-4 lg:gap-6">
         <motion.div
           ref={leftDivRef}
-          className="h-full p-8 lg:p-12 from-[#2C94DF] to-[#0061A8] bg-gradient-to-r flex flex-col items-center rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
+          className="h-full p-6 lg:p-8 from-[#2C94DF] to-[#0061A8] bg-gradient-to-r flex flex-col items-center rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
           variants={slideInLeft}
           initial="hidden"
           animate={isLeftInView ? "visible" : "hidden"}
@@ -149,13 +149,13 @@ const Why = () => {
             <Image
               src="/images/49.png"
               alt=""
-              width={270}
-              height={500}
-              className="lg:w-[280px] w-[180px] transform transition-transform duration-300"
+              width={220}
+              height={400}
+              className="lg:w-[220px] w-[160px] transform transition-transform duration-300"
             />
           </motion.div>
           <motion.h2
-            className="text-slate-50 lg:text-4xl text-2xl font-semibold my-6 text-center"
+            className="text-slate-50 lg:text-3xl text-xl font-semibold my-4 text-center"
             variants={titleVariants}
           >
             Why Inovact Social?
@@ -164,52 +164,52 @@ const Why = () => {
 
         <motion.div
           ref={rightDivRef}
-          className="h-full flex flex-col gap-6"
+          className="h-full flex flex-col gap-4"
           variants={slideInRight}
           initial="hidden"
           animate={isRightInView ? "visible" : "hidden"}
         >
           <motion.div
-            className="flex-1 bg-[#C8ECF9] p-8 lg:p-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="flex-1 bg-[#C8ECF9] p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-center"
             variants={featureCardVariants}
             custom={0}
             whileHover={{ scale: 1.02 }}
           >
-            <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-center lg:text-right">
+            <h2 className="text-xl lg:text-2xl font-semibold mb-3 text-center">
               Simplicity Rules
             </h2>
-            <p className="text-[#535353] lg:text-right text-center leading-relaxed">
+            <p className="text-[#535353]  leading-relaxed text-sm lg:text-base sm:text-center text-center">
               Our 2-step collab process is designed for you. We get how hard it
               can be to find your team, and we&apos;re here to make it happen.
             </p>
           </motion.div>
 
-          <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
             <motion.div
-              className="h-full bg-[#D8E8DB] p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="h-full bg-[#D8E8DB] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               variants={featureCardVariants}
               custom={1}
               whileHover={{ scale: 1.02 }}
             >
-              <h2 className="text-2xl font-semibold mb-4 text-center lg:text-left">
+              <h2 className="text-xl font-semibold mb-3 text-center">
                 No BS Zone
               </h2>
-              <p className="text-[#535353] leading-relaxed text-center lg:text-left">
+              <p className="text-[#535353] leading-relaxed text-center text-sm lg:text-base">
                 We&apos;re all about building serious & cool stuff. Students and
                 early-stage entrepreneurs can work together without the fluff.
               </p>
             </motion.div>
 
             <motion.div
-              className="h-full bg-[#E8D7F1] p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="h-full bg-[#E8D7F1] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               variants={featureCardVariants}
               custom={2}
               whileHover={{ scale: 1.02 }}
             >
-              <h2 className="text-2xl font-semibold mb-4 text-center lg:text-left">
+              <h2 className="text-xl font-semibold mb-3 text-center">
                 Gamified Experience
               </h2>
-              <p className="text-[#535353] leading-relaxed text-center lg:text-left">
+              <p className="text-[#535353] leading-relaxed text-center text-sm lg:text-base">
                 We&apos;re turning hard work into rewards. Your hustle deserves
                 recognition, and we&apos;re here to make sure it doesn&apos;t go
                 unnoticed.
