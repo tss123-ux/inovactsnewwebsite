@@ -51,15 +51,15 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-16 pb-10 sm:pb-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+      <section className="pt-16 pb-5  sm:pb-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-5xl mx-auto text-center">
           <h1
             ref={scrollUpRef}
-            className="text-3xl sm:text-4xl sm:text-center text-left  font-medium mb-8 text-gray-900"
+            className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6"
           >
             About Inovact
           </h1>
-          <p className="text-lg text-justify sm:text-center sm:text-xl text-gray-600 leading-relaxed mb-12">
+          <p className="text-gray-600 leading-relaxed mb-6 text-left sm:text-center">
             Founded in 2021, Inovact is reshaping how students connect,
             collaborate, and create through innovative solutions and
             community-driven development.

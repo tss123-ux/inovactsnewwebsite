@@ -1,13 +1,11 @@
-"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Logo animation variants
   const logoVariants = {
     hidden: { opacity: 0, x: -20 },
     visible: {
@@ -27,7 +25,6 @@ const Navbar = () => {
     },
   };
 
-  // Nav items animation variants
   const navItemVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: {
@@ -40,7 +37,6 @@ const Navbar = () => {
     },
   };
 
-  // Play Store button animation variants
   const playStoreVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -71,34 +67,35 @@ const Navbar = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm h-[11vh]"
       >
-        <div className="px-4 sm:px-6 lg:px-8 flex items-center justify-between max-w-7xl mx-auto py-4 ">
+        <div className="px-4 sm:px-6 lg:px-8 flex items-center justify-between max-w-7xl mx-auto py-4">
           <motion.div
             variants={logoVariants}
             initial="hidden"
             animate="visible"
             whileHover="hover"
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-2 flex-shrink"
           >
             <Link href={"/"} className="flex items-center gap-1 group">
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
+                className="flex-shrink-0"
               >
                 <Image
                   src="/images/48.jpg"
                   alt="Inovact Logo"
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   className="rounded-full shadow-md hover:shadow-lg transition-shadow duration-300"
                 />
               </motion.div>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1649FF] to-[#0D2C99]  text-sm sm:text-base lg:text-lg xl:text-xl transition-all duration-300 ease-in-out">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1649FF] to-[#0D2C99] text-xs sm:text-sm lg:text-lg whitespace-nowrap flex-shrink">
                 Inovact Private Limited
               </span>
             </Link>
           </motion.div>
 
-          <div className="flex items-center  sm:space-x-8">
+          <div className="flex items-center sm:space-x-8">
             <motion.div
               variants={navItemVariants}
               initial="hidden"
@@ -125,7 +122,7 @@ const Navbar = () => {
               initial="hidden"
               animate="visible"
               whileHover="hover"
-              className="relative group"
+              className="relative group flex-shrink-0"
             >
               <Link
                 href="https://play.google.com/store/apps/details?id=in.pranaydas.inovact"
@@ -143,7 +140,7 @@ const Navbar = () => {
                     width={120}
                     height={120}
                     alt="Play Store"
-                    className=""
+                    className="scale-50 sm:scale-75"
                   />
                 </motion.div>
               </Link>
