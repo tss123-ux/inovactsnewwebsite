@@ -146,7 +146,7 @@ const Wall = () => {
 
   return (
     <motion.div
-      className="lg:my-20 lg:mt-48 py-16 flex flex-col items-center justify-center px-4 lg:px-8 mx-auto max-w-7xl relative bg-gradient-to-b from-transparent via-blue-50/30 to-transparent"
+      className="lg:my-20 lg:mb-0 lg:mt-36 py-16 flex flex-col items-center justify-center px-4 lg:px-8 mx-auto max-w-7xl relative bg-gradient-to-b from-transparent via-blue-50/30 to-transparent"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

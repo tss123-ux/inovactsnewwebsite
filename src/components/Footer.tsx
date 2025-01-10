@@ -51,6 +51,11 @@ const Footer = ({
                 About Us
               </h3>
             </Link>
+            <Link href="/talent" target="_self">
+              <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors">
+                LaunchPad
+              </h3>
+            </Link>
           </div>
           <div>
             <h2 className="text-xl sm:text-2xl font-medium mb-2">Product</h2>

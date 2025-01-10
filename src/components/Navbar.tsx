@@ -103,6 +103,27 @@ const Navbar = () => {
               className="hidden md:block"
             >
               <Link
+                href={"/talent"}
+                target="_blank"
+                className="relative text-gray-700 hover:text-[#1649FF] transition-colors duration-300 py-2 text-lg"
+              >
+                <span className="relative z-10">Launchpad</span>
+                <motion.span
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1649FF] origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={navItemVariants}
+              initial="hidden"
+              animate="visible"
+              className="hidden md:block"
+            >
+              <Link
                 href={"/about"}
                 target="_blank"
                 className="relative text-gray-700 hover:text-[#1649FF] transition-colors duration-300 py-2 text-lg"

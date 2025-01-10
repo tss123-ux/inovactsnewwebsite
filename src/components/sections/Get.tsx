@@ -39,7 +39,7 @@ const Get = () => {
 
   return (
     <motion.div
-      className="max-w-7xl mx-auto flex flex-col justify-between items-center px-5 gap-10 py-12 my-20 lg:mb-48"
+      className="max-w-7xl mx-auto flex flex-col justify-between items-center px-5 gap-10 py-12 my-20 lg:mb-32"
       initial="hidden"
       animate="visible"
       variants={{

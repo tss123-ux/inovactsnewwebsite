@@ -73,7 +73,7 @@ export default function AboutPage() {
           <div className="space-y-12">
             {/* Our Story */}
             <div>
-              <h2 className="text-2xl text-center  font-medium  text-gray-900 mb-6">
+              <h2 className="text-2xl text-center  font-medium  text-gray-900 mb-6 mt-10">
                 Our Story
               </h2>
               <div className="prose prose-lg">

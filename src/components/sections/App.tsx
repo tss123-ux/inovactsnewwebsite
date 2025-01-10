@@ -20,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto w-full  flex items-center justify-between  p-6 lg:px-8 lg:pt-20 flex-col relative bg-gradient-to-br from-white to-blue-50 lg:mb-48">
+    <div className="max-w-7xl mx-auto w-full  flex items-center justify-between  p-6 lg:px-8 lg:pt-20 flex-col relative bg-gradient-to-br from-white to-blue-50 lg:mb-20">
       <motion.div
         initial="hidden"
         whileInView="visible"

@@ -102,7 +102,7 @@ const Why = () => {
 
   return (
     <motion.div
-      className="my-12 flex flex-col gap-6 items-center max-w-6xl mx-auto px-4 lg:px-6 lg:mb-32 mb-32"
+      className="my-12 flex flex-col gap-6 items-center max-w-6xl mx-auto px-4 lg:px-6 lg:mb-0 mb-32"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

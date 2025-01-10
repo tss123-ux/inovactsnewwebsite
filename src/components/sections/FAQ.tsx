@@ -72,7 +72,7 @@ const FAQ = () => {
   return (
     <motion.div
       ref={sectionRef}
-      className="my-14 lg:my-32 lg:mt-0 flex flex-col items-center justify-center px-4 lg:px-8 mx-auto max-w-7xl relative lg:mb-48"
+      className="my-14 lg:my-32 lg:mt-0 flex flex-col items-center justify-center px-4 lg:px-8 mx-auto max-w-7xl relative lg:mb-32"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
