@@ -126,7 +126,7 @@ const Rewarded = () => {
 
         {/* Right Column - Content */}
         <div className="lg:w-1/2 w-full flex flex-col justify-center space-y-8 relative z-20">
-          <motion.div
+          {/* <motion.div
             variants={topImageVariants}
             className="relative w-full max-w-lg mx-auto"
           >
@@ -137,6 +137,21 @@ const Rewarded = () => {
               height={400}
               alt="Rewards illustration"
               className="w-full transform hover:scale-105 transition-transform duration-300 relative"
+              priority
+            />
+          </motion.div> */}
+
+          <motion.div
+            variants={topImageVariants}
+            className="relative w-full  mx-auto"
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-indigo-50 rounded-xl transform " />
+            <Image
+              src="/images/23.svg"
+              width={700}
+              height={400}
+              alt="Build illustration"
+              className="w-full max-w-sm mx-auto transform hover:scale-105 transition-transform duration-300 relative"
               priority
             />
           </motion.div>
@@ -162,7 +177,7 @@ const Rewarded = () => {
 
           <motion.div
             variants={bottomImageVariants}
-            className="relative w-full max-w-lg mx-auto"
+            className="relative w-full  mx-auto"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform" />
             <Image
@@ -170,7 +185,7 @@ const Rewarded = () => {
               width={700}
               height={400}
               alt="Additional rewards illustration"
-              className="relative w-full hover:scale-105 transition-transform duration-300"
+              className="relative w-full max-w-lg mx-auto hover:scale-105 transition-transform duration-300"
               priority
             />
           </motion.div>

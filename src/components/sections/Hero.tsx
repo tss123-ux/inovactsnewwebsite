@@ -7,49 +7,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaYoutube } from "react-icons/fa";
 const Hero = () => {
   const words = ["proof", "of", "work"];
-  const [startAnimation, setStartAnimation] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [reversing, setReversing] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setStartAnimation(true);
-    }, 1000);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
     let currentIndex = 0;
-    // Calculate total length including spaces
     const totalLength = words.join(" ").length;
-
     const interval = setInterval(() => {
-      if (currentIndex >= totalLength) {
-        clearInterval(interval);
-        return;
+      if (currentIndex > totalLength) {
+        if (!reversing) {
+          setTimeout(() => {
+            setReversing(true);
+          }, 1000); // Delay before reversing
+        } else {
+          setActiveIndex(-1);
+          currentIndex = 0;
+          setReversing(false);
+        }
+      } else {
+        setActiveIndex(currentIndex);
+        currentIndex++;
       }
-      setActiveIndex(currentIndex);
-      currentIndex++;
     }, 150);
 
     return () => clearInterval(interval);
-  }, [startAnimation]);
-
-  const textVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
+  }, [reversing]);
 
   const letterVariants = {
     normal: {
@@ -67,20 +49,42 @@ const Hero = () => {
         "none",
       ],
       transition: {
-        duration: 0.3,
-        color: { duration: 0.3 },
-        backgroundImage: { duration: 0.3 },
+        scale: { duration: 0.5 },
+        color: { duration: 0.5 },
+        backgroundImage: { duration: 0.5 },
+      },
+    },
+    reverse: {
+      scale: 1,
+      color: "transparent",
+      backgroundImage: "linear-gradient(to right, #60A5FA, #818CF8)",
+      backgroundClip: "text",
+      transition: {
+        duration: 1,
       },
     },
   };
 
-  // Function to determine if a letter should be animated
   const shouldAnimate = (wordIndex: any, letterIndex: any) => {
     const previousWordsLength = words
       .slice(0, wordIndex)
       .reduce((acc, word) => acc + word.length + 1, 0); // +1 for space
     const currentPosition = previousWordsLength + letterIndex;
     return currentPosition <= activeIndex;
+  };
+
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
   };
 
   // Background reveal animation
@@ -251,7 +255,9 @@ const Hero = () => {
                       initial="normal"
                       animate={
                         shouldAnimate(wordIndex, letterIndex)
-                          ? "active"
+                          ? reversing
+                            ? "reverse"
+                            : "active"
                           : "normal"
                       }
                       className="inline-block bg-clip-text"

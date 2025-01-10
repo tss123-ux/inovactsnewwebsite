@@ -139,9 +139,9 @@ const Effortless = () => {
             className="text-center lg:text-left space-y-4"
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl  text-left font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-              Seamless Collaboration:
+              Find Your Crew
               <br />
-              <span className="text-gray-800">Find Your Crew</span>
+              {/* <span className="text-gray-800">Find Your Crew</span> */}
             </h2>
             <p className="lg:text-lg max-w-2xl text-justify sm:text-start mx-auto lg:mx-0 text-base text-zinc-700 leading-relaxed">
               Find a teammate or co-founder for your project or idea in just two
@@ -152,7 +152,7 @@ const Effortless = () => {
 
           <motion.div
             variants={bottomImageVariants}
-            className="relative w-full max-w-lg mx-auto"
+            className="relative w-full  mx-auto"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform" />
             <Image
@@ -160,7 +160,7 @@ const Effortless = () => {
               width={700}
               height={400}
               alt="Collaboration process"
-              className="relative w-full hover:scale-105 transition-transform duration-300"
+              className="relative max-w-lg mx-auto w-full hover:scale-105 transition-transform duration-300"
             />
           </motion.div>
         </div>

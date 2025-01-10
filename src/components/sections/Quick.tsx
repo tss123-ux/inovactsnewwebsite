@@ -132,7 +132,7 @@ const Quick = () => {
 
           <motion.div
             variants={bottomImageVariants}
-            className="relative w-full max-w-lg mx-auto"
+            className="relative w-full  mx-auto"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-xl transform" />
             <Image
@@ -140,7 +140,7 @@ const Quick = () => {
               width={700}
               height={400}
               alt="Quick join process"
-              className="relative w-full hover:scale-105 transition-transform duration-300"
+              className="relative max-w-lg mx-auto w-full hover:scale-105 transition-transform duration-300"
               priority
             />
           </motion.div>

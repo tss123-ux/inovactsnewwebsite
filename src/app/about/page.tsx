@@ -47,12 +47,12 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-justify">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-16 pb-5  sm:pb-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-5xl mx-auto text-center">
+      {/* <section className="pt-16 pb-5  sm:pb-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto text-center">
           <h1
             ref={scrollUpRef}
             className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6"
@@ -65,25 +65,27 @@ export default function AboutPage() {
             community-driven development.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Main Content Section */}
       <section className="py-16 pt-0 sm:pt-0 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
             {/* Our Story */}
             <div>
-              <h2 className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6">
+              <h2 className="text-2xl text-center  font-medium  text-gray-900 mb-6">
                 Our Story
               </h2>
               <div className="prose prose-lg">
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Inovact Private Limited emerged from the innovative minds of
-                  two engineering students who recognized the challenges in
-                  student collaboration and team formation. What began as a
-                  solution to their own frustrations has evolved into a
-                  comprehensive platform that&apos;s reshaping how students
-                  connect, collaborate, and create.
+                <p className="text-gray-600 leading-relaxed mb-6  ">
+                  Founded in 2021, Inovact is reshaping how students connect,
+                  collaborate, and create through innovative solutions and
+                  community-driven development. Inovact Private Limited emerged
+                  from the innovative minds of two engineering students who
+                  recognized the challenges in student collaboration and team
+                  formation. What began as a solution to their own frustrations
+                  has evolved into a comprehensive platform that&apos;s
+                  reshaping how students connect, collaborate, and create.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                   Through dedication and innovation, we&apos;ve built a platform
@@ -96,7 +98,7 @@ export default function AboutPage() {
 
             {/* Our Mission */}
             <div>
-              <h2 className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6">
+              <h2 className="text-2xl text-center  font-medium  text-gray-900 mb-6">
                 Our Mission
               </h2>
               <Card className="bg-gray-50">
@@ -115,7 +117,7 @@ export default function AboutPage() {
 
             {/* Our Impact */}
             <div>
-              <h2 className="text-2xl sm:text-center text-left font-medium  text-gray-900 mb-6">
+              <h2 className="text-2xl text-center  font-medium  text-gray-900 mb-6">
                 Our Impact
               </h2>
               <div className="grid sm:grid-cols-3 gap-6 mb-8">
@@ -163,7 +165,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-medium text-gray-900 mb-3">
               Our Young Team
@@ -174,7 +176,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-wrap justify-center gap-12 lg:gap-y-4 gap-y-6">
             {teamMembers.map((member, index) => (
               <div key={member.name} className="w-64">
                 <Card className="relative overflow-hidden bg-white">

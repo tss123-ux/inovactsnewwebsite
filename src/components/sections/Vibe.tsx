@@ -78,9 +78,7 @@ const Vibe = () => {
           <motion.div
             variants={rotateIn}
             className="text-gray-200 drop-shadow-lg  z-10  text-8xl font-bold absolute -top-10 left-0 transform -rotate-12"
-          >
-            #
-          </motion.div>
+          ></motion.div>
           <motion.div
             variants={fadeInUp}
             // whileHover={{ scale: 1.02 }}

@@ -75,7 +75,7 @@ const Navbar = () => {
             whileHover="hover"
             className="flex items-center space-x-2 flex-shrink"
           >
-            <Link href={"/"} className="flex items-center gap-1 group">
+            <Link href={"/"} className="flex items-center gap-2 group">
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
@@ -84,12 +84,12 @@ const Navbar = () => {
                 <Image
                   src="/images/48.jpg"
                   alt="Inovact Logo"
-                  width={40}
-                  height={40}
-                  className="rounded-full shadow-md hover:shadow-lg transition-shadow duration-300"
+                  width={48}
+                  height={48}
+                  className="rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] lg:w-[56px] lg:h-[56px]"
                 />
               </motion.div>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1649FF] to-[#0D2C99] text-xs sm:text-sm lg:text-lg whitespace-nowrap flex-shrink">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1649FF] to-[#0D2C99] text-sm sm:text-lg lg:text-xl xl:text-2xl font-medium whitespace-nowrap">
                 Inovact Private Limited
               </span>
             </Link>
@@ -105,7 +105,7 @@ const Navbar = () => {
               <Link
                 href={"/about"}
                 target="_blank"
-                className="relative text-gray-700 hover:text-[#1649FF] transition-colors duration-300 py-2"
+                className="relative text-gray-700 hover:text-[#1649FF] transition-colors duration-300 py-2 text-lg"
               >
                 <span className="relative z-10">About Us</span>
                 <motion.span
@@ -137,10 +137,10 @@ const Navbar = () => {
                 >
                   <Image
                     src="/images/1.png"
-                    width={120}
-                    height={120}
+                    width={160}
+                    height={160}
                     alt="Play Store"
-                    className="scale-50 sm:scale-75"
+                    className="scale-75 sm:scale-90 lg:scale-100"
                   />
                 </motion.div>
               </Link>

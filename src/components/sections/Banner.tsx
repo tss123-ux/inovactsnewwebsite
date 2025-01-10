@@ -71,7 +71,7 @@ const Banner = () => {
 
         <div className="relative bg-gradient-to-r from-[#25D366]/90 to-[#128C7E]/90 py-4 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-center gap-2 sm:gap-4 ">
+            <div className="flex items-center justify-center gap-2 sm:gap-4 lg:ml-36 ">
               <div className="flex items-center space-x-2">
                 <motion.span
                   // variants={sparkleVariants}
@@ -103,7 +103,7 @@ const Banner = () => {
                   className="hidden lg:block"
                 >
                   <motion.button
-                    className="bg-white text-indigo-600 px-8 py-2 rounded-xl font-medium 
+                    className="bg-white text-[#0D2C99] px-4 py-2 rounded-xl font-medium 
                              transform transition-all duration-300 hover:bg-opacity-90
                              focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
                   >

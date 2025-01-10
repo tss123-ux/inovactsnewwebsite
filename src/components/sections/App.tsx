@@ -69,15 +69,13 @@ const App = () => {
             variants={childVariants}
             transition={{ duration: 0.3 }} // Faster animation
             className="text-gray-200  z-10  text-8xl font-bold absolute -top-10 left-0 transform -rotate-12"
-          >
-            #
-          </motion.div>
+          ></motion.div>
 
           <motion.div
             variants={childVariants}
             // whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }} // Faster animation
-            className="text-white p-8 bg-[#1649FF] max-w-lg text-lg sm:text-2xl rounded-lg shadow-lg transform transition-all hover:shadow-xl"
+            className="  text-white p-8 bg-[#1649FF] max-w-lg text-lg sm:text-2xl shadow-lg rounded-lg transform hover:shadow-xl transition-all duration-300 border-4 border-white-all hover:shadow-xl"
           >
             A social network for students and entrepreneurs powered by proof of
             work

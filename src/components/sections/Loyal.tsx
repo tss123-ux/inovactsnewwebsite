@@ -76,7 +76,7 @@ const Loyal = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="mt-48 mb-10 sm:mb-0 lg:my-[330px] lg:mb-[200px] lg:py-20 max-w-[100vw] overflow-hidden mx-auto"
+      className="mt-48 lg:mt-[500px] mb-10 sm:mb-0 lg:my-[330px] lg:mb-[200px] lg:py-20 pt-20 max-w-[100vw] overflow-hidden mx-auto"
     >
       {/* Background gradient */}
       {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent" /> */}
