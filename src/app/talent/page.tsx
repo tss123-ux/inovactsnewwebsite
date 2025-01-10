@@ -161,7 +161,7 @@ const InovactLanding = () => {
     {
       title: "Success Fee",
       description:
-        "We charge 8.33% of the candidate's CTC as our success fee, payable only upon successful hiring.",
+        "We charge 8.33% of the candidate&apos;s CTC as our success fee, payable only upon successful hiring.",
       icon: <Percent className="w-8 h-8 text-blue-600" />,
       highlight: "8.33% CTC",
       subtext: "Pay only after successful placement",
@@ -177,7 +177,7 @@ const InovactLanding = () => {
     {
       title: "Refund Policy",
       description:
-        "If we fail to provide a replacement within 15 days of the client's request, we will refund the entire amount paid as a success fee.",
+        "If we fail to provide a replacement within 15 days of the client&apos;s request, we will refund the entire amount paid as a success fee.",
       icon: <BadgeCheck className="w-8 h-8 text-blue-600" />,
       highlight: "100% Refund",
       subtext: "15-day replacement guarantee",
@@ -341,8 +341,8 @@ const InovactLanding = () => {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Tell us about your hiring needs and we'll get back to you within 24
-            hours.
+            Tell us about your hiring needs and we&apos;ll get back to you
+            within 24 hours.
           </p>
 
           <Card>
