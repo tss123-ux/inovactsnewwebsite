@@ -234,7 +234,7 @@ const InovactLanding = () => {
           <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
             Our Process: Simplified and Efficient
           </h2>
-          <p className="text-justify text-gray-600 mt-4">
+          <p className="sm:text-center text-justify text-gray-600 mt-4">
             Experience our streamlined hiring process designed for optimal
             results
           </p>
@@ -274,7 +274,7 @@ const InovactLanding = () => {
           <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
             Why Choose Inovact Talent Launchpad?
           </h2>
-          <p className="text-justify text-gray-600 mt-4">
+          <p className="sm:text-center text-justify text-gray-600 mt-4">
             Our unique approach delivers exceptional results
           </p>
         </div>
@@ -321,7 +321,7 @@ const InovactLanding = () => {
               >
                 <CardContent className="p-8">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors duration-300">
+                    <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors duration-300">
                       {policy.icon}
                     </div>
                     <Badge
