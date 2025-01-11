@@ -380,7 +380,7 @@ const InovactLanding = () => {
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
@@ -397,7 +397,7 @@ const InovactLanding = () => {
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
@@ -415,7 +415,7 @@ const InovactLanding = () => {
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
@@ -432,7 +432,7 @@ const InovactLanding = () => {
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
@@ -466,7 +466,7 @@ const InovactLanding = () => {
                             <SelectItem value="500+">500+ employees</SelectItem>
                           </SelectContent>
                         </Select>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
@@ -495,7 +495,7 @@ const InovactLanding = () => {
                             <SelectItem value="marketing">Marketing</SelectItem>
                           </SelectContent>
                         </Select>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
@@ -523,7 +523,7 @@ const InovactLanding = () => {
                             <SelectItem value="8+">8+ years</SelectItem>
                           </SelectContent>
                         </Select>
-                        <FormMessage />
+                        <FormMessage className="text-left" />
                       </FormItem>
                     )}
                   />
