@@ -4,8 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  CheckCircle,
-  Users,
   Target,
   Clock,
   Shield,
@@ -18,6 +16,7 @@ import {
   Percent,
   BadgeCheck,
   RefreshCcw,
+  HandshakeIcon,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,32 +35,53 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { CheckCircle, Users, TrendingUp, Headset } from "lucide-react";
 import * as z from "zod";
 
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
+
+import { collection, addDoc } from "firebase/firestore";
+import { requests } from "@/utils/firebaseConfig";
 
 const formSchema = z.object({
   companyName: z.string().min(1, "Company name is required"),
   contactName: z.string().min(1, "Contact name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().regex(/^\d{10}$/, "Phone number must be 10 digits"),
-  companySize: z.enum(["1-10", "11-50", "51-200", "201-500", "500+"], {
-    required_error: "Please select company size",
-  }),
-  roleHiring: z.enum(["software-dev", "ui-ux", "sales", "marketing"], {
-    required_error: "Please select role",
-  }),
-  experience: z.enum(["0-1", "1-3", "3-5", "5-8", "8+"], {
-    required_error: "Please select experience range",
-  }),
+  companySize: z
+    .enum(["1-10", "11-50", "51-200", "201-500", "500+"], {
+      required_error: "Please select company size",
+    })
+    .optional(),
+  roleHiring: z
+    .enum(["software-dev", "ui-ux", "sales", "marketing"], {
+      required_error: "Please select role",
+    })
+    .optional(),
+  experience: z
+    .enum(["0-1", "1-3", "3-5", "5-8", "8+"], {
+      required_error: "Please select experience range",
+    })
+    .optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
+const RippleEffect = () => (
+  <div className="absolute -top-1 -right-1 p-2">
+    <div className="relative">
+      <div className="absolute animate-ping w-3 h-3 rounded-full bg-blue-400 opacity-75" />
+      <div className="relative w-3 h-3 rounded-full bg-blue-500" />
+    </div>
+  </div>
+);
+
 const InovactLanding = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Initialize the form with React Hook Form and Zod resolver
   const form = useForm<FormValues>({
@@ -80,11 +100,37 @@ const InovactLanding = () => {
   const onSubmit = async (data: FormValues) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form submitted:", data);
-      form.reset();
+      await addDoc(requests, data);
+      toast({
+        title: "Request received",
+        description: "We'll get back to you",
+      });
+
+      // Properly reset all fields including Select components
+      form.reset(
+        {
+          companyName: "",
+          contactName: "",
+          email: "",
+          phone: "",
+          companySize: undefined,
+          roleHiring: undefined,
+          experience: undefined,
+        },
+        {
+          keepDefaultValues: true,
+        }
+      );
+
+      // Force Select components to update their internal state
+      form.setValue("companySize", undefined, { shouldDirty: false });
+      form.setValue("roleHiring", undefined, { shouldDirty: false });
+      form.setValue("experience", undefined, { shouldDirty: false });
     } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+      });
       console.error("Error submitting form:", error);
     } finally {
       setIsLoading(false);
@@ -136,51 +182,59 @@ const InovactLanding = () => {
 
   const benefits = [
     {
-      icon: <FileCheck className="w-8 h-8 text-blue-600" />,
-      title: "Proof of Work First",
-      description: "Focus on real-world experience and demonstrated abilities",
+      icon: <TrendingUp className="w-8 h-8 text-blue-600" />,
+      title: "Accelerated Hiring Process",
+      metric: "50% Faster Time-to-Hire",
+      description:
+        "Streamlined recruitment workflow with AI-powered candidate matching",
     },
     {
-      icon: <Clock className="w-8 h-8 text-blue-600" />,
-      title: "Fast Turnaround",
-      description: "From job description to offer letter in just 5 days",
+      icon: <CheckCircle className="w-8 h-8 text-blue-600" />,
+      title: "Pre-Vetted Talent Pool",
+      metric: "95% Success Rate",
+      description:
+        "Access to thoroughly assessed candidates ready for immediate deployment",
     },
     {
-      icon: <Briefcase className="w-8 h-8 text-blue-600" />,
-      title: "Diverse Domains",
-      description: "Hire for software, UI/UX, sales, and marketing roles",
+      icon: <Users className="w-8 h-8 text-blue-600" />,
+      title: "Strategic Talent Solutions",
+      metric: "100% Skill Match",
+      description:
+        "Customized recruitment strategies aligned with your business goals",
     },
     {
-      icon: <Shield className="w-8 h-8 text-blue-600" />,
-      title: "Proven Track Record",
-      description: "7 clients and 20+ successful placements in 6 months",
+      icon: <Headset className="w-8 h-8 text-blue-600" />,
+      title: "End-to-End Support",
+      metric: "24/7 Assistance",
+      description:
+        "Dedicated account management throughout your hiring journey",
     },
   ];
 
   const policies = [
     {
-      title: "Success Fee",
+      icon: <Shield className="w-6 h-6 text-blue-600" />,
+      highlight: "Guarantee",
+      title: "Quality Assurance",
+      subtext: "100% Satisfaction Guaranteed",
       description:
-        "We charge 8.33% of the candidate's CTC as our success fee, payable only upon successful hiring.",
-      icon: <Percent className="w-8 h-8 text-blue-600" />,
-      highlight: "8.33% CTC",
-      subtext: "Pay only after successful placement",
+        "Each candidate undergoes thorough screening and skill validation before joining your team",
     },
     {
-      title: "Candidate Replacement Guarantee",
+      icon: <Clock className="w-6 h-6 text-blue-600" />,
+      highlight: "Timeline",
+      title: "Rapid Placement",
+      subtext: "2-Week Average Timeline",
       description:
-        "If the candidate is found unfit within the first three months of joining, we will replace the candidate at no additional cost.",
-      icon: <RefreshCcw className="w-8 h-8 text-blue-600" />,
-      highlight: "3 Months",
-      subtext: "Free replacement period",
+        "Streamlined process ensures quick deployment while maintaining high quality standards",
     },
     {
-      title: "Refund Policy",
+      icon: <HandshakeIcon className="w-6 h-6 text-blue-600" />,
+      highlight: "Support",
+      title: "Ongoing Partnership",
+      subtext: "Dedicated Success Manager",
       description:
-        "If we fail to provide a replacement within 15 days of the client's request, we will refund the entire amount paid as a success fee.",
-      icon: <BadgeCheck className="w-8 h-8 text-blue-600" />,
-      highlight: "100% Refund",
-      subtext: "15-day replacement guarantee",
+        "Continuous support and regular check-ins to ensure long-term success of placements",
     },
   ];
 
@@ -239,27 +293,59 @@ const InovactLanding = () => {
             results
           </p>
         </div>
+
         <div className="max-w-4xl mx-auto">
           {processSteps.map((step, index) => (
-            <div key={index} className="relative pl-8 pb-16 last:pb-0">
+            <div
+              key={index}
+              className="relative pl-8 pb-16 last:pb-0"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Animated connection line */}
               {index !== processSteps.length - 1 && (
-                <div className="absolute left-[15px] top-10 w-0.5 h-full bg-blue-200" />
+                <div className="absolute left-[15px] top-10 w-0.5 bg-gradient-to-b from-blue-600 to-blue-200 h-full">
+                  <div className="absolute top-0 left-0 w-full h-full bg-blue-400 animate-pulse" />
+                </div>
               )}
+
               <div className="relative">
-                <div className="absolute left-[-33px] bg-blue-600 rounded-full p-2 text-white">
+                {/* Animated icon bubble */}
+                <div className="absolute left-[-33px] bg-blue-600 rounded-full p-2 text-white transform transition-all duration-300 hover:scale-110 hover:rotate-12">
                   {step.icon}
                 </div>
-                <Card className="ml-4 transform transition-all hover:scale-[1.02]">
+
+                <Card
+                  className={`
+                  ml-4 transform transition-all duration-300 cursor-pointer
+                  ${hoveredIndex === index ? "scale-[1.02] shadow-lg" : ""}
+                  hover:shadow-xl relative overflow-hidden
+                `}
+                >
+                  <RippleEffect />
                   <CardContent className="p-6">
-                    <Badge className="mb-3 bg-blue-50 text-blue-700 hover:bg-blue-50">
+                    <Badge className="mb-3 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors">
                       {step.highlight}
                     </Badge>
+
                     <h3 className="text-xl font-medium text-gray-900 mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600 text-justify">
-                      {step.description}
-                    </p>
+
+                    <div
+                      className={`
+                      overflow-hidden transition-all duration-300 ease-in-out
+                      ${
+                        hoveredIndex === index
+                          ? "max-h-40 opacity-100"
+                          : "max-h-0 opacity-0"
+                      }
+                    `}
+                    >
+                      <p className="text-gray-600 text-justify">
+                        {step.description}
+                      </p>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -269,75 +355,99 @@ const InovactLanding = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="container mx-auto px-4 py-20 bg-gray-50">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
-            Why Choose Inovact Talent Launchpad?
-          </h2>
-          <p className="sm:text-center text-justify text-gray-600 mt-4">
-            Our unique approach delivers exceptional results
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <Card
-              key={index}
-              className="transform transition-all hover:scale-105"
-            >
-              <CardContent className="p-6 text-center">
-                <div className="mb-4 flex justify-center">{benefit.icon}</div>
-                <h3 className="text-xl font-medium text-gray-900 mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-justify text-gray-600">
-                  {benefit.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4">
+              Why Choose Inovact Talent Launchpad?
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Empowering businesses with innovative talent solutions
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <Card
+                key={index}
+                className="group h-[280px] bg-white hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              >
+                <CardContent className="p-6 flex flex-col items-center h-full justify-between">
+                  <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-lg bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
+                    {benefit.icon}
+                  </div>
+
+                  <div className="flex-1 flex flex-col items-center">
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">
+                      {benefit.title}
+                    </h3>
+
+                    <div className="text-blue-600 font-medium text-sm mb-3">
+                      {benefit.metric}
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600 text-center text-sm leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Policies Section */}
-      <section className="container mx-auto px-4 py-20 bg-gray-50">
-        <div className=" mx-auto">
+      <section className="bg-gray-50 py-20">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-blue-100 text-blue-700 hover:bg-blue-100">
-              Our Commitment
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+            <div className="inline-block">
+              <Badge className="bg-blue-50 text-blue-600 hover:bg-blue-100 px-4 py-1 text-sm font-medium rounded-full">
+                Our Commitment
+              </Badge>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mt-4 mb-4">
               Clear & Transparent Policies
             </h2>
-            <p className="text-justify text-gray-600 mt-4  mx-auto">
+
+            <p className="text-gray-600 max-w-2xl mx-auto">
               We believe in building long-term partnerships through transparent
               policies and exceptional service
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {policies.map((policy, index) => (
               <Card
                 key={index}
-                className="bg-white overflow-hidden group hover:shadow-lg transition-all duration-300"
+                className="group h-[320px] bg-white hover:shadow-lg transition-all duration-300"
               >
-                <CardContent className="p-8">
+                <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors duration-300">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
                       {policy.icon}
                     </div>
+
                     <Badge
                       variant="secondary"
-                      className="text-sm sm:text-md font-semibold"
+                      className="bg-gray-50 text-gray-600 px-3"
                     >
                       {policy.highlight}
                     </Badge>
                   </div>
-                  <h3 className="text-xl font-medium text-gray-900 mb-2">
-                    {policy.title}
-                  </h3>
-                  <p className="text-sm text-blue-600 font-medium mb-4">
-                    {policy.subtext}
-                  </p>
-                  <p className="text-justify text-gray-600 leading-relaxed">
+
+                  <div className="mb-4">
+                    <h3 className="text-xl font-medium text-gray-900 mb-2">
+                      {policy.title}
+                    </h3>
+
+                    <p className="text-sm text-blue-600 font-medium">
+                      {policy.subtext}
+                    </p>
+                  </div>
+
+                  <p className="text-gray-600 text-sm leading-relaxed mt-auto">
                     {policy.description}
                   </p>
                 </CardContent>
@@ -353,10 +463,10 @@ const InovactLanding = () => {
         className="container mx-auto px-4 py-20 bg-blue-50"
       >
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl   font-medium text-gray-900 mb-6">
             Ready to Get Started?
           </h2>
-          <p className=" text-gray-600 mb-8">
+          <p className=" text-gray-600 mb-8 ">
             Tell us about your hiring needs and we&apos;ll get back to you
             within 24 hours.
           </p>
@@ -444,8 +554,10 @@ const InovactLanding = () => {
                       <FormItem>
                         <Select
                           disabled={isLoading}
-                          onValueChange={field.onChange}
-                          value={field.value}
+                          onValueChange={(value) =>
+                            field.onChange(value || undefined)
+                          }
+                          value={field.value || undefined}
                         >
                           <FormControl>
                             <SelectTrigger>
@@ -478,8 +590,10 @@ const InovactLanding = () => {
                       <FormItem>
                         <Select
                           disabled={isLoading}
-                          onValueChange={field.onChange}
-                          value={field.value}
+                          onValueChange={(value) =>
+                            field.onChange(value || undefined)
+                          }
+                          value={field.value || undefined}
                         >
                           <FormControl>
                             <SelectTrigger>
@@ -507,8 +621,10 @@ const InovactLanding = () => {
                       <FormItem>
                         <Select
                           disabled={isLoading}
-                          onValueChange={field.onChange}
-                          value={field.value}
+                          onValueChange={(value) =>
+                            field.onChange(value || undefined)
+                          }
+                          value={field.value || undefined}
                         >
                           <FormControl>
                             <SelectTrigger>
