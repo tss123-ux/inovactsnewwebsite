@@ -17,6 +17,9 @@ import {
   BadgeCheck,
   RefreshCcw,
   HandshakeIcon,
+  ChevronDown,
+  Headphones,
+  Rocket,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,6 +48,9 @@ import { toast } from "@/hooks/use-toast";
 
 import { collection, addDoc } from "firebase/firestore";
 import { requests } from "@/utils/firebaseConfig";
+import { AnimatePresence, motion } from "framer-motion";
+import BenefitsAndPolicies from "@/components/BenefitsPolicy";
+import PartnersSection from "@/components/Partners";
 
 const formSchema = z.object({
   companyName: z.string().min(1, "Company name is required"),
@@ -70,12 +76,44 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const RippleEffect = () => (
-  <div className="absolute -top-1 -right-1 p-2">
-    <div className="relative">
-      <div className="absolute animate-ping w-3 h-3 rounded-full bg-blue-400 opacity-75" />
-      <div className="relative w-3 h-3 rounded-full bg-blue-500" />
-    </div>
+const AnimatedArrow = () => (
+  <div className="absolute bottom-3 right-3">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5 }}
+      className="relative"
+    >
+      <motion.div
+        animate={{
+          y: [0, 4, 0],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      >
+        <ChevronDown className="w-5 h-5 text-blue-500" />
+      </motion.div>
+      <motion.div
+        animate={{
+          y: [0, 4, 0],
+          opacity: [0.5, 0.2, 0.5],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+          delay: 0.2,
+        }}
+        className="absolute top-0 left-0"
+      >
+        <ChevronDown className="w-5 h-5 text-blue-300" />
+      </motion.div>
+    </motion.div>
   </div>
 );
 
@@ -182,59 +220,59 @@ const InovactLanding = () => {
 
   const benefits = [
     {
-      icon: <TrendingUp className="w-8 h-8 text-blue-600" />,
-      title: "Accelerated Hiring Process",
-      metric: "50% Faster Time-to-Hire",
+      icon: <Clock className="w-8 h-8 text-blue-600" />,
+      title: "5-Day Hiring Process",
+      metric: "5x Faster Time-to-Hire",
       description:
-        "Streamlined recruitment workflow with AI-powered candidate matching",
-    },
-    {
-      icon: <CheckCircle className="w-8 h-8 text-blue-600" />,
-      title: "Pre-Vetted Talent Pool",
-      metric: "95% Success Rate",
-      description:
-        "Access to thoroughly assessed candidates ready for immediate deployment",
+        "From job description to offer letter, we complete the entire process in just 5 days",
     },
     {
       icon: <Users className="w-8 h-8 text-blue-600" />,
-      title: "Strategic Talent Solutions",
-      metric: "100% Skill Match",
+      title: "Proof of Work First",
+      metric: "100% Skill Verified",
       description:
-        "Customized recruitment strategies aligned with your business goals",
+        "We focus on real-world experience and demonstrated abilities, not just resumes",
     },
     {
-      icon: <Headset className="w-8 h-8 text-blue-600" />,
-      title: "End-to-End Support",
-      metric: "24/7 Assistance",
+      icon: <Target className="w-8 h-8 text-blue-600" />,
+      title: "Multi-Domain Expertise",
+      metric: "4+ Core Domains",
       description:
-        "Dedicated account management throughout your hiring journey",
+        "Specialized hiring for software development, UI/UX design, sales, and marketing roles",
+    },
+    {
+      icon: <Headphones className="w-8 h-8 text-blue-600" />,
+      title: "Proven Success",
+      metric: "20+ Successful Placements",
+      description:
+        "Served 7 satisfied clients with over 20 successful candidate placements in 6 months",
     },
   ];
 
   const policies = [
     {
-      icon: <Shield className="w-6 h-6 text-blue-600" />,
+      icon: <Shield className="w-8 h-8 text-green-600" />,
       highlight: "Guarantee",
-      title: "Quality Assurance",
-      subtext: "100% Satisfaction Guaranteed",
+      title: "3-Month Replacement Guarantee",
+      subtext: "100% Risk-Free Hiring",
       description:
-        "Each candidate undergoes thorough screening and skill validation before joining your team",
+        "If a candidate is found unfit within three months, we provide a replacement at no additional cost",
     },
     {
-      icon: <Clock className="w-6 h-6 text-blue-600" />,
-      highlight: "Timeline",
-      title: "Rapid Placement",
-      subtext: "2-Week Average Timeline",
+      icon: <Rocket className="w-8 h-8 text-green-600" />,
+      highlight: "Pricing",
+      title: "Success-Based Fee",
+      subtext: "8.33% of CTC",
       description:
-        "Streamlined process ensures quick deployment while maintaining high quality standards",
+        "Pay only upon successful hiring, with a competitive fee structure of 8.33% of the candidate's CTC",
     },
     {
-      icon: <HandshakeIcon className="w-6 h-6 text-blue-600" />,
-      highlight: "Support",
-      title: "Ongoing Partnership",
-      subtext: "Dedicated Success Manager",
+      icon: <HandshakeIcon className="w-8 h-8 text-green-600" />,
+      highlight: "Refund",
+      title: "15-Day Replacement Promise",
+      subtext: "100% Money Back Guarantee",
       description:
-        "Continuous support and regular check-ins to ensure long-term success of placements",
+        "Full refund of the success fee if we cannot provide a replacement within 15 days of request",
     },
   ];
 
@@ -245,6 +283,7 @@ const InovactLanding = () => {
     "/api/placeholder/120/60",
     "/api/placeholder/120/60",
   ];
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const scrollUpRef = useRef<HTMLDivElement>(null);
   const scrollUp = () => {
@@ -256,35 +295,91 @@ const InovactLanding = () => {
     scrolldownRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  // Stagger children animation variant
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardHover = {
+    hover: {
+      y: -5,
+      transition: { duration: 0.2 },
+    },
+  };
+
   return (
     <div className="min-h-screen  bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section ref={scrollUpRef} className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-100">
-            Talent Acquisition Reimagined
-          </Badge>
-          <h1 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6">
+      <motion.section
+        ref={scrollUpRef}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+        className="container mx-auto px-4 py-20"
+      >
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div variants={fadeIn}>
+            <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-100">
+              Talent Acquisition Reimagined
+            </Badge>
+          </motion.div>
+
+          <motion.h1
+            variants={fadeIn}
+            className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6"
+          >
             Where Proof of Work Meets Perfect Hires
-          </h1>
-          <p className=" text-justify text-gray-600 mb-8  mx-auto">
+          </motion.h1>
+
+          <motion.p
+            variants={fadeIn}
+            className="text-justify text-gray-600 mb-8 mx-auto"
+          >
             We go beyond resumes, bringing proof of work to the forefront of
             hiring, helping small to medium-sized businesses find exceptional
             talent in record time.
-          </p>
-          <Button
-            onClick={scrollDown}
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700"
-          >
-            Start Hiring <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+          </motion.p>
+
+          <motion.div variants={fadeIn}>
+            <Button
+              onClick={scrollDown}
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              Start Hiring <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Process Timeline Section */}
       <section className="container mx-auto px-4 py-20 bg-white">
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
             Our Process: Simplified and Efficient
           </h2>
@@ -292,37 +387,53 @@ const InovactLanding = () => {
             Experience our streamlined hiring process designed for optimal
             results
           </p>
-        </div>
+        </motion.div>
 
         <div className="max-w-4xl mx-auto">
           {processSteps.map((step, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative pl-8 pb-16 last:pb-0"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Animated connection line */}
               {index !== processSteps.length - 1 && (
                 <div className="absolute left-[15px] top-10 w-0.5 bg-gradient-to-b from-blue-600 to-blue-200 h-full">
-                  <div className="absolute top-0 left-0 w-full h-full bg-blue-400 animate-pulse" />
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="absolute top-0 left-0 w-full h-full bg-blue-400 origin-top"
+                  />
                 </div>
               )}
 
               <div className="relative">
-                {/* Animated icon bubble */}
-                <div className="absolute left-[-33px] bg-blue-600 rounded-full p-2 text-white transform transition-all duration-300 hover:scale-110 hover:rotate-12">
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  whileHover={{ scale: 1.1, rotate: 12 }}
+                  className="absolute left-[-33px] bg-blue-600 rounded-full p-2 text-white"
+                >
                   {step.icon}
-                </div>
+                </motion.div>
 
                 <Card
                   className={`
                   ml-4 transform transition-all duration-300 cursor-pointer
-                  ${hoveredIndex === index ? "scale-[1.02] shadow-lg" : ""}
+                  ${expandedIndex === index ? "scale-[1.02] shadow-lg" : ""}
                   hover:shadow-xl relative overflow-hidden
                 `}
+                  onClick={() =>
+                    setExpandedIndex(expandedIndex === index ? null : index)
+                  }
                 >
-                  <RippleEffect />
+                  {expandedIndex !== index && <AnimatedArrow />}
                   <CardContent className="p-6">
                     <Badge className="mb-3 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors">
                       {step.highlight}
@@ -332,130 +443,34 @@ const InovactLanding = () => {
                       {step.title}
                     </h3>
 
-                    <div
-                      className={`
-                      overflow-hidden transition-all duration-300 ease-in-out
-                      ${
-                        hoveredIndex === index
-                          ? "max-h-40 opacity-100"
-                          : "max-h-0 opacity-0"
-                      }
-                    `}
-                    >
-                      <p className="text-gray-600 text-justify">
-                        {step.description}
-                      </p>
-                    </div>
+                    <AnimatePresence>
+                      {expandedIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-gray-600 text-justify">
+                            {step.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </CardContent>
                 </Card>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4">
-              Why Choose Inovact Talent Launchpad?
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Empowering businesses with innovative talent solutions
-            </p>
-          </div>
+      {/* Benefits and Policy Section */}
+      <BenefitsAndPolicies benefits={benefits} policies={policies} />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card
-                key={index}
-                className="group h-[280px] bg-white hover:shadow-lg transition-shadow duration-300 flex flex-col"
-              >
-                <CardContent className="p-6 flex flex-col items-center h-full justify-between">
-                  <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-lg bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
-                    {benefit.icon}
-                  </div>
-
-                  <div className="flex-1 flex flex-col items-center">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">
-                      {benefit.title}
-                    </h3>
-
-                    <div className="text-blue-600 font-medium text-sm mb-3">
-                      {benefit.metric}
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 text-center text-sm leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Policies Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block">
-              <Badge className="bg-blue-50 text-blue-600 hover:bg-blue-100 px-4 py-1 text-sm font-medium rounded-full">
-                Our Commitment
-              </Badge>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mt-4 mb-4">
-              Clear & Transparent Policies
-            </h2>
-
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We believe in building long-term partnerships through transparent
-              policies and exceptional service
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {policies.map((policy, index) => (
-              <Card
-                key={index}
-                className="group h-[320px] bg-white hover:shadow-lg transition-all duration-300"
-              >
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
-                      {policy.icon}
-                    </div>
-
-                    <Badge
-                      variant="secondary"
-                      className="bg-gray-50 text-gray-600 px-3"
-                    >
-                      {policy.highlight}
-                    </Badge>
-                  </div>
-
-                  <div className="mb-4">
-                    <h3 className="text-xl font-medium text-gray-900 mb-2">
-                      {policy.title}
-                    </h3>
-
-                    <p className="text-sm text-blue-600 font-medium">
-                      {policy.subtext}
-                    </p>
-                  </div>
-
-                  <p className="text-gray-600 text-sm leading-relaxed mt-auto">
-                    {policy.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Partners Section */}
+      <PartnersSection partnerLogos={partnerLogos} />
 
       {/* CTA Section */}
       <section
@@ -685,27 +700,6 @@ const InovactLanding = () => {
               </Form>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* Partners Section */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl sm:text-3xl font-medium text-center text-gray-900 mb-12">
-          Our Partners
-        </h2>
-        <div className="flex flex-wrap justify-center items-center gap-8 max-w-4xl mx-auto">
-          {partnerLogos.map((logo, index) => (
-            <div
-              key={index}
-              className="grayscale hover:grayscale-0 transition-all"
-            >
-              <img
-                src={logo}
-                alt={`Partner ${index + 1}`}
-                className="h-12 object-contain"
-              />
-            </div>
-          ))}
         </div>
       </section>
 
