@@ -47,7 +47,7 @@ const Get = () => {
       }}
     >
       <motion.h2
-        className="text-transparent bg-clip-text bg-gradient-to-r from-[#1649FF] to-[#0D2C99] lg:text-6xl sm:text-4xl text-2xl w-full font-medium text-left md:text-center"
+        className="text-transparent bg-clip-text bg-gradient-to-r from-[#1649FF] to-[#0D2C99] lg:text-6xl sm:text-4xl text-2xl w-full font-medium text-center"
         variants={headingVariants}
       >
         Get Inovact Social Now

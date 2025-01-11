@@ -161,7 +161,7 @@ const InovactLanding = () => {
     {
       title: "Success Fee",
       description:
-        "We charge 8.33% of the candidate&apos;s CTC as our success fee, payable only upon successful hiring.",
+        "We charge 8.33% of the candidate's CTC as our success fee, payable only upon successful hiring.",
       icon: <Percent className="w-8 h-8 text-blue-600" />,
       highlight: "8.33% CTC",
       subtext: "Pay only after successful placement",
@@ -177,7 +177,7 @@ const InovactLanding = () => {
     {
       title: "Refund Policy",
       description:
-        "If we fail to provide a replacement within 15 days of the client&apos;s request, we will refund the entire amount paid as a success fee.",
+        "If we fail to provide a replacement within 15 days of the client's request, we will refund the entire amount paid as a success fee.",
       icon: <BadgeCheck className="w-8 h-8 text-blue-600" />,
       highlight: "100% Refund",
       subtext: "15-day replacement guarantee",
@@ -197,23 +197,32 @@ const InovactLanding = () => {
     scrollUpRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrolldownRef = useRef<HTMLDivElement>(null);
+  const scrollDown = () => {
+    scrolldownRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen  bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section ref={scrollUpRef} className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-100">
             Talent Acquisition Reimagined
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6">
             Where Proof of Work Meets Perfect Hires
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className=" text-justify text-gray-600 mb-8  mx-auto">
             We go beyond resumes, bringing proof of work to the forefront of
             hiring, helping small to medium-sized businesses find exceptional
             talent in record time.
           </p>
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+          <Button
+            onClick={scrollDown}
+            size="lg"
+            className="bg-blue-600 hover:bg-blue-700"
+          >
             Start Hiring <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
         </div>
@@ -222,10 +231,10 @@ const InovactLanding = () => {
       {/* Process Timeline Section */}
       <section className="container mx-auto px-4 py-20 bg-white">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
             Our Process: Simplified and Efficient
           </h2>
-          <p className="text-gray-600 mt-4">
+          <p className="text-justify text-gray-600 mt-4">
             Experience our streamlined hiring process designed for optimal
             results
           </p>
@@ -245,10 +254,12 @@ const InovactLanding = () => {
                     <Badge className="mb-3 bg-blue-50 text-blue-700 hover:bg-blue-50">
                       {step.highlight}
                     </Badge>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-xl font-medium text-gray-900 mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-gray-600 text-justify">
+                      {step.description}
+                    </p>
                   </CardContent>
                 </Card>
               </div>
@@ -260,10 +271,10 @@ const InovactLanding = () => {
       {/* Benefits Section */}
       <section className="container mx-auto px-4 py-20 bg-gray-50">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
             Why Choose Inovact Talent Launchpad?
           </h2>
-          <p className="text-gray-600 mt-4">
+          <p className="text-justify text-gray-600 mt-4">
             Our unique approach delivers exceptional results
           </p>
         </div>
@@ -275,10 +286,12 @@ const InovactLanding = () => {
             >
               <CardContent className="p-6 text-center">
                 <div className="mb-4 flex justify-center">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-medium text-gray-900 mb-2">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <p className="text-justify text-gray-600">
+                  {benefit.description}
+                </p>
               </CardContent>
             </Card>
           ))}
@@ -287,15 +300,15 @@ const InovactLanding = () => {
 
       {/* Policies Section */}
       <section className="container mx-auto px-4 py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
+        <div className=" mx-auto">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-blue-100 text-blue-700 hover:bg-blue-100">
               Our Commitment
             </Badge>
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
               Clear & Transparent Policies
             </h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-justify text-gray-600 mt-4  mx-auto">
               We believe in building long-term partnerships through transparent
               policies and exceptional service
             </p>
@@ -313,18 +326,18 @@ const InovactLanding = () => {
                     </div>
                     <Badge
                       variant="secondary"
-                      className="text-lg font-semibold"
+                      className="text-sm sm:text-md font-semibold"
                     >
                       {policy.highlight}
                     </Badge>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-medium text-gray-900 mb-2">
                     {policy.title}
                   </h3>
                   <p className="text-sm text-blue-600 font-medium mb-4">
                     {policy.subtext}
                   </p>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-justify text-gray-600 leading-relaxed">
                     {policy.description}
                   </p>
                 </CardContent>
@@ -335,12 +348,15 @@ const InovactLanding = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20 bg-blue-50">
+      <section
+        ref={scrolldownRef}
+        className="container mx-auto px-4 py-20 bg-blue-50"
+      >
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className=" text-gray-600 mb-8">
             Tell us about your hiring needs and we&apos;ll get back to you
             within 24 hours.
           </p>
@@ -558,7 +574,7 @@ const InovactLanding = () => {
 
       {/* Partners Section */}
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl text-center text-gray-900 mb-12">
+        <h2 className="text-2xl sm:text-3xl font-medium text-center text-gray-900 mb-12">
           Our Partners
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-8 max-w-4xl mx-auto">
