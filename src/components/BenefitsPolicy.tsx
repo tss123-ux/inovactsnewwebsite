@@ -4,6 +4,17 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
 const BenefitsAndPolicies = ({ benefits, policies }: any) => {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
   return (
     <>
       {/* Benefits Section */}
@@ -105,7 +116,7 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group h-[320px] bg-white hover:shadow-lg transition-all duration-300">
+                <Card className="group h-full bg-white hover:shadow-lg transition-all duration-300">
                   <CardContent className="p-6 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-6">
                       <motion.div
@@ -135,7 +146,7 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
                       </p>
                     </div>
 
-                    <p className="text-gray-600 text-sm leading-relaxed mt-auto">
+                    <p className="text-gray-600 text-sm leading-relaxed ">
                       {policy.description}
                     </p>
                   </CardContent>

@@ -51,6 +51,15 @@ import { requests } from "@/utils/firebaseConfig";
 import { AnimatePresence, motion } from "framer-motion";
 import BenefitsAndPolicies from "@/components/BenefitsPolicy";
 import PartnersSection from "@/components/Partners";
+import logo1 from "../../assets/PVL.jpg";
+import logo2 from "../../assets/Tvast.jpeg";
+import logo3 from "../../assets/craftech360_logo.jpeg";
+import logo4 from "../../assets/downloadinsideout.png";
+import logo5 from "../../assets/powerone.jpeg";
+import logo6 from "../../assets/rekonsile_logo.jpeg";
+import Image from "next/image";
+import DotPattern from "@/components/ui/dot-pattern";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   companyName: z.string().min(1, "Company name is required"),
@@ -179,40 +188,42 @@ const InovactLanding = () => {
     {
       title: "Share Your Requirements",
       description:
-        "Provide a detailed job description and assignment for the role",
+        "Provide us with a detailed job description and an assignment for the role you're hiring for.",
       icon: <Target className="w-6 h-6" />,
       highlight: "Step 1",
     },
     {
       title: "Sourcing Exceptional Talent",
       description:
-        "We tap into Inovact Social, Developer Communities, and Professional Networks",
+        "We tap into multiple channels to find the right fit for your role: Inovact Social - our exclusive social network for students and entrepreneurs, Developer Communities - our own and partnered WhatsApp groups, and Professional Networks like LinkedIn, Naukri, and other platforms.",
       icon: <Search className="w-6 h-6" />,
       highlight: "Step 2",
     },
     {
-      title: "Assessing Talent",
+      title: "Assessing Talent Based on Proof of Work",
       description:
-        "Evaluation through portfolios, project links, and tangible proof of skills",
+        "Every candidate is evaluated through portfolios, project links, and other tangible proof of their skills.",
       icon: <FileCheck className="w-6 h-6" />,
       highlight: "Step 3",
     },
     {
-      title: "Skill & Culture Fit",
-      description: "Thorough interviews for technical and cultural alignment",
+      title: "Skill Fit & Culture Fit Interviews",
+      description:
+        "We conduct a thorough round of interviews to ensure the candidates meet both the technical and cultural requirements of your organization.",
       icon: <UserCheck className="w-6 h-6" />,
       highlight: "Step 4",
     },
     {
       title: "Assignment Evaluation",
       description:
-        "Candidates complete tailored assignments to demonstrate expertise",
+        "Candidates complete a tailored assignment to demonstrate their expertise and problem-solving approach.",
       icon: <CheckCircle className="w-6 h-6" />,
       highlight: "Step 5",
     },
     {
-      title: "Top Candidates",
-      description: "We present top 5 profiles ready for your final HR round",
+      title: "Presenting Top Candidates",
+      description:
+        "We deliver a shortlist of top 5 profiles. All you need to do is conduct a final HR round to make the offer.",
       icon: <Users className="w-6 h-6" />,
       highlight: "Step 6",
     },
@@ -276,13 +287,7 @@ const InovactLanding = () => {
     },
   ];
 
-  const partnerLogos = [
-    "/api/placeholder/120/60",
-    "/api/placeholder/120/60",
-    "/api/placeholder/120/60",
-    "/api/placeholder/120/60",
-    "/api/placeholder/120/60",
-  ];
+  const partnerLogos = [logo1, logo2, logo3, logo4, logo5, logo6];
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const scrollUpRef = useRef<HTMLDivElement>(null);
@@ -327,6 +332,8 @@ const InovactLanding = () => {
 
   return (
     <div className="min-h-screen  bg-gradient-to-b from-gray-50 to-white">
+      {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]" /> */}
+
       {/* Hero Section */}
       <motion.section
         ref={scrollUpRef}
@@ -334,9 +341,20 @@ const InovactLanding = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerChildren}
-        className="container mx-auto px-4 py-20"
+        className="container mx-auto px-4 py-20 sm:pt-40 pt-20"
       >
         <div className="max-w-7xl mx-auto text-center">
+          <DotPattern
+            width={20}
+            height={20}
+            cx={1}
+            cy={1}
+            cr={1}
+            className={cn(
+              "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+            )}
+          />
+
           <motion.div variants={fadeIn}>
             <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-100">
               Talent Acquisition Reimagined
@@ -372,7 +390,7 @@ const InovactLanding = () => {
       </motion.section>
 
       {/* Process Timeline Section */}
-      <section className="container mx-auto px-4 py-20 bg-white">
+      <section className="container  mx-auto px-4 py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -383,7 +401,7 @@ const InovactLanding = () => {
           <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
             Our Process: Simplified and Efficient
           </h2>
-          <p className="sm:text-center text-justify text-gray-600 mt-4">
+          <p className="text-center text-gray-600 mt-4">
             Experience our streamlined hiring process designed for optimal
             results
           </p>
@@ -471,6 +489,7 @@ const InovactLanding = () => {
 
       {/* Partners Section */}
       <PartnersSection partnerLogos={partnerLogos} />
+      {/* <Image src={logo1} alt="_" /> */}
 
       {/* CTA Section */}
       <section
