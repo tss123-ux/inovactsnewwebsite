@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/form";
 import { CheckCircle, Users, TrendingUp, Headset } from "lucide-react";
 import * as z from "zod";
+import emailjs from "@emailjs/browser";
 
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
@@ -67,20 +68,12 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().regex(/^\d{10}$/, "Phone number must be 10 digits"),
   companySize: z
-    .enum(["1-10", "11-50", "51-200", "201-500", "500+"], {
-      required_error: "Please select company size",
-    })
+    .enum(["1-10", "11-50", "51-200", "201-500", "500+"])
     .optional(),
   roleHiring: z
-    .enum(["software-dev", "ui-ux", "sales", "marketing"], {
-      required_error: "Please select role",
-    })
+    .enum(["software-dev", "ui-ux", "sales", "marketing"])
     .optional(),
-  experience: z
-    .enum(["0-1", "1-3", "3-5", "5-8", "8+"], {
-      required_error: "Please select experience range",
-    })
-    .optional(),
+  experience: z.enum(["0-1", "1-3", "3-5", "5-8", "8+"]).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -131,48 +124,89 @@ const InovactLanding = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Initialize the form with React Hook Form and Zod resolver
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      companyName: "",
-      contactName: "",
-      email: "",
-      phone: "",
-      companySize: undefined,
-      roleHiring: undefined,
-      experience: undefined,
-    },
+  const [formData, setFormData] = useState<FormValues>({
+    companyName: "",
+    contactName: "",
+    email: "",
+    phone: "",
+    companySize: undefined,
+    roleHiring: undefined,
+    experience: undefined,
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof FormValues, string>>
+  >({});
+
+  const validateForm = () => {
+    try {
+      formSchema.parse(formData);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Partial<Record<keyof FormValues, string>> = {};
+        error.errors.forEach((err) => {
+          if (err.path) {
+            newErrors[err.path[0] as keyof FormValues] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
+    }
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
     try {
-      await addDoc(requests, data);
+      await addDoc(requests, formData);
       toast({
         title: "Request received",
         description: "We'll get back to you",
       });
+      emailjs
+        .send(
+          "service_g3z66ko",
+          "template_jecaf4i",
+          {
+            from_name: formData.companyName,
+            to_name: "Sarang",
+            from_email: formData.email,
+            to_email: "inovacteam@gmail.com",
+            message: `
+              companyName: ${formData.companyName}
+              contactName :${formData.contactName}
+              companySize: ${formData.companySize}
+              email: ${formData.email}
+              phone:${formData.phone}
+              hiringFor: ${formData.roleHiring}
+              Experience:${formData.experience}
+            `,
+          },
+          "5bG7oTqyWUlj9dOIg"
+        )
+        .then(() => console.log(1));
 
       // Properly reset all fields including Select components
-      form.reset(
-        {
-          companyName: "",
-          contactName: "",
-          email: "",
-          phone: "",
-          companySize: undefined,
-          roleHiring: undefined,
-          experience: undefined,
-        },
-        {
-          keepDefaultValues: true,
-        }
-      );
-
-      // Force Select components to update their internal state
-      form.setValue("companySize", undefined, { shouldDirty: false });
-      form.setValue("roleHiring", undefined, { shouldDirty: false });
-      form.setValue("experience", undefined, { shouldDirty: false });
+      setFormData({
+        ...formData,
+        companyName: "",
+        contactName: "",
+        email: "",
+        phone: "",
+      });
     } catch (error) {
       toast({
         variant: "destructive",
@@ -182,6 +216,13 @@ const InovactLanding = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSelectChange = (name: keyof FormValues, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const processSteps = [
@@ -492,231 +533,204 @@ const InovactLanding = () => {
       {/* <Image src={logo1} alt="_" /> */}
 
       {/* CTA Section */}
-      <section
-        ref={scrolldownRef}
-        className="container mx-auto px-4 py-20 bg-blue-50"
-      >
+      <section className="container mx-auto px-4 py-12 sm:py-20 bg-blue-50">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl   font-medium text-gray-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4 sm:mb-6">
             Ready to Get Started?
           </h2>
-          <p className=" text-gray-600 mb-8 ">
+          <p className="text-gray-600 mb-6 sm:mb-8">
             Tell us about your hiring needs and we&apos;ll get back to you
             within 24 hours.
           </p>
 
-          <Card>
-            <CardContent className="p-6">
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
-                >
-                  <FormField
-                    control={form.control}
+          <Card className="shadow-lg">
+            <CardContent className="p-4 sm:p-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="space-y-4">
+                  <Input
+                    type="text"
                     name="companyName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Company Name"
-                            disabled={isLoading}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
+                    value={formData.companyName}
+                    onChange={handleInputChange}
+                    placeholder="Company Name"
+                    disabled={isLoading}
+                    className="w-full"
                   />
+                  {errors.companyName && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.companyName}
+                    </p>
+                  )}
+                </div>
 
-                  <FormField
-                    control={form.control}
+                <div className="space-y-4">
+                  <Input
+                    type="text"
                     name="contactName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Point of Contact Name"
-                            disabled={isLoading}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
+                    value={formData.contactName}
+                    onChange={handleInputChange}
+                    placeholder="Point of Contact Name"
+                    disabled={isLoading}
+                    className="w-full"
                   />
+                  {errors.contactName && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.contactName}
+                    </p>
+                  )}
+                </div>
 
-                  <FormField
-                    control={form.control}
+                <div className="space-y-4">
+                  <Input
+                    type="email"
                     name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="Email Address"
-                            disabled={isLoading}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email Address"
+                    disabled={isLoading}
+                    className="w-full"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
 
-                  <FormField
-                    control={form.control}
+                <div className="space-y-4">
+                  <Input
+                    type="tel"
                     name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Phone Number"
-                            disabled={isLoading}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Phone Number"
+                    disabled={isLoading}
+                    className="w-full"
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.phone}
+                    </p>
+                  )}
+                </div>
 
-                  <FormField
-                    control={form.control}
-                    name="companySize"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Select
-                          disabled={isLoading}
-                          onValueChange={(value) =>
-                            field.onChange(value || undefined)
-                          }
-                          value={field.value || undefined}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Company Size" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="1-10">1-10 employees</SelectItem>
-                            <SelectItem value="11-50">
-                              11-50 employees
-                            </SelectItem>
-                            <SelectItem value="51-200">
-                              51-200 employees
-                            </SelectItem>
-                            <SelectItem value="201-500">
-                              201-500 employees
-                            </SelectItem>
-                            <SelectItem value="500+">500+ employees</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="roleHiring"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Select
-                          disabled={isLoading}
-                          onValueChange={(value) =>
-                            field.onChange(value || undefined)
-                          }
-                          value={field.value || undefined}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Role Hiring For" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="software-dev">
-                              Software Development
-                            </SelectItem>
-                            <SelectItem value="ui-ux">UI/UX Design</SelectItem>
-                            <SelectItem value="sales">Sales</SelectItem>
-                            <SelectItem value="marketing">Marketing</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="experience"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Select
-                          disabled={isLoading}
-                          onValueChange={(value) =>
-                            field.onChange(value || undefined)
-                          }
-                          value={field.value || undefined}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Experience Required" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="0-1">0-1 years</SelectItem>
-                            <SelectItem value="1-3">1-3 years</SelectItem>
-                            <SelectItem value="3-5">3-5 years</SelectItem>
-                            <SelectItem value="5-8">5-8 years</SelectItem>
-                            <SelectItem value="8+">8+ years</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage className="text-left" />
-                      </FormItem>
-                    )}
-                  />
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-blue-600 hover:bg-blue-700"
+                <div className="space-y-4">
+                  <Select
+                    value={formData.companySize}
+                    onValueChange={(value) =>
+                      handleSelectChange("companySize", value)
+                    }
                     disabled={isLoading}
                   >
-                    {isLoading ? (
-                      <span className="flex items-center">
-                        <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Submitting...
-                      </span>
-                    ) : (
-                      <span className="flex items-center">
-                        <Mail className="mr-2 w-4 h-4" />
-                        Contact Us Today
-                      </span>
-                    )}
-                  </Button>
-                </form>
-              </Form>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Company Size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1-10">1-10 employees</SelectItem>
+                      <SelectItem value="11-50">11-50 employees</SelectItem>
+                      <SelectItem value="51-200">51-200 employees</SelectItem>
+                      <SelectItem value="201-500">201-500 employees</SelectItem>
+                      <SelectItem value="500+">500+ employees</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.companySize && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.companySize}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-4">
+                  <Select
+                    value={formData.roleHiring}
+                    onValueChange={(value) =>
+                      handleSelectChange("roleHiring", value)
+                    }
+                    disabled={isLoading}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Role Hiring For" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="software-dev">
+                        Software Development
+                      </SelectItem>
+                      <SelectItem value="ui-ux">UI/UX Design</SelectItem>
+                      <SelectItem value="sales">Sales</SelectItem>
+                      <SelectItem value="marketing">Marketing</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.roleHiring && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.roleHiring}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-4">
+                  <Select
+                    value={formData.experience}
+                    onValueChange={(value) =>
+                      handleSelectChange("experience", value)
+                    }
+                    disabled={isLoading}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Experience Required" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="0-1">0-1 years</SelectItem>
+                      <SelectItem value="1-3">1-3 years</SelectItem>
+                      <SelectItem value="3-5">3-5 years</SelectItem>
+                      <SelectItem value="5-8">5-8 years</SelectItem>
+                      <SelectItem value="8+">8+ years</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.experience && (
+                    <p className="text-red-500 text-sm text-left mt-1">
+                      {errors.experience}
+                    </p>
+                  )}
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  disabled={isLoading}
+                  size="lg"
+                >
+                  {isLoading ? (
+                    <span className="flex items-center justify-center">
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Submitting...
+                    </span>
+                  ) : (
+                    <span className="flex items-center justify-center">
+                      <Mail className="mr-2 w-4 h-4" />
+                      Contact Us Today
+                    </span>
+                  )}
+                </Button>
+              </form>
             </CardContent>
           </Card>
         </div>
