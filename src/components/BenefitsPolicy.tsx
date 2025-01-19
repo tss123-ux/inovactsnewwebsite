@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import DotPattern from "./ui/dot-pattern";
+import { cn } from "@/lib/utils";
 
 const BenefitsAndPolicies = ({ benefits, policies }: any) => {
   const fadeIn = {
@@ -18,8 +20,19 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
   return (
     <>
       {/* Benefits Section */}
-      <section className="bg-white py-20">
+
+      <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
+          <DotPattern
+            width={20}
+            height={20}
+            cx={1}
+            cy={1}
+            cr={1}
+            className={cn(
+              "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] "
+            )}
+          />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,11 +69,11 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
                       {benefit.icon}
                     </motion.div>
 
-                    <div className="flex-1 flex flex-col items-center">
+                    <div className=" flex flex-col items-center">
                       <h3 className="text-lg font-medium text-gray-900 mb-2">
                         {benefit.title}
                       </h3>
-                      <div className="text-blue-600 font-medium text-sm mb-3">
+                      <div className="text-blue-600 font-medium text-sm ">
                         {benefit.metric}
                       </div>
                     </div>

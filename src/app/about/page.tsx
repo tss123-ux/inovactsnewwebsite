@@ -6,6 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import NumberTicker from "@/components/ui/number-ticker";
 import { Linkedin } from "lucide-react";
 import { useRef } from "react";
+import DotPattern from "@/components/ui/dot-pattern";
+import { cn } from "@/lib/utils";
+import GridPattern from "@/components/ui/grid-pattern";
 
 const teamMembers = [
   {
@@ -68,8 +71,17 @@ export default function AboutPage() {
       </section> */}
 
       {/* Main Content Section */}
+      <GridPattern
+        width={20}
+        height={20}
+        x={-1}
+        y={-1}
+        className={cn(
+          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+        )}
+      />
       <section className="py-16 pt-0 sm:pt-0 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div ref={scrollUpRef} className="max-w-6xl mx-auto">
           <div className="space-y-12">
             {/* Our Story */}
             <div>

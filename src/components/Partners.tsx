@@ -24,7 +24,7 @@ const PartnersSection = ({ partnerLogos }: any) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-2xl sm:text-3xl font-medium text-gray-900 mb-6"
           >
-            Our Partners
+            Our Clients
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -33,8 +33,7 @@ const PartnersSection = ({ partnerLogos }: any) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center  text-gray-600 mt-4"
           >
-            Collaborating with world-class companies to deliver exceptional
-            solutions
+            Helping exceptional companies the right talent at the right time
           </motion.p>
         </div>
 

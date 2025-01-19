@@ -20,6 +20,9 @@ import {
   ChevronDown,
   Headphones,
   Rocket,
+  Blocks,
+  ClipboardCheck,
+  Trophy,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -236,7 +239,7 @@ const InovactLanding = () => {
     {
       title: "Sourcing Exceptional Talent",
       description:
-        "We tap into multiple channels to find the right fit for your role: Inovact Social - our exclusive social network for students and entrepreneurs, Developer Communities - our own and partnered WhatsApp groups, and Professional Networks like LinkedIn, Naukri, and other platforms.",
+        "We source talent through Inovact Social, our exclusive network for students and entrepreneurs, partnered Whatsapp groups and professional platforms like LinkedIn and Naukri.",
       icon: <Search className="w-6 h-6" />,
       highlight: "Step 2",
     },
@@ -272,32 +275,36 @@ const InovactLanding = () => {
 
   const benefits = [
     {
-      icon: <Clock className="w-8 h-8 text-blue-600" />,
+      // Rocket icon better represents speed and fast processes
+      icon: <Rocket className="w-8 h-8 text-blue-600" />,
       title: "5-Day Hiring Process",
       metric: "5x Faster Time-to-Hire",
       description:
         "From job description to offer letter, we complete the entire process in just 5 days",
     },
     {
-      icon: <Users className="w-8 h-8 text-blue-600" />,
+      // CheckCircle icon better represents verification and proof
+      icon: <ClipboardCheck className="w-8 h-8 text-blue-600" />,
       title: "Proof of Work First",
       metric: "100% Skill Verified",
       description:
         "We focus on real-world experience and demonstrated abilities, not just resumes",
     },
     {
-      icon: <Target className="w-8 h-8 text-blue-600" />,
+      // Code icon better represents technical domains and expertise
+      icon: <Blocks className="w-8 h-8 text-blue-600" />,
       title: "Multi-Domain Expertise",
       metric: "4+ Core Domains",
       description:
-        "Specialized hiring for software development, UI/UX design, sales, and marketing roles",
+        "Specialized hiring for software development, UI/UX design and many",
     },
     {
-      icon: <Headphones className="w-8 h-8 text-blue-600" />,
+      // Trophy icon better represents success and achievements
+      icon: <Trophy className="w-8 h-8 text-blue-600" />,
       title: "Proven Success",
       metric: "20+ Successful Placements",
       description:
-        "Served 7 satisfied clients with over 20 successful candidate placements in 6 months",
+        "Served 7 satisfied clients with over 20 successful candidate placements",
     },
   ];
 
@@ -533,7 +540,10 @@ const InovactLanding = () => {
       {/* <Image src={logo1} alt="_" /> */}
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-12 sm:py-20 bg-blue-50">
+      <section
+        ref={scrolldownRef}
+        className="container mx-auto px-4 py-12 sm:py-20 bg-blue-50"
+      >
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-4 sm:mb-6">
             Ready to Get Started?
