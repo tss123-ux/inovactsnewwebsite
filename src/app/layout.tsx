@@ -11,6 +11,9 @@ const inter = Poppins({
 export const metadata: Metadata = {
   title: "Inovact | Home",
   description: "",
+  // icons: {
+  //   icon: require("./favicon.png"), // Just add this line and put your PNG file in public folder
+  // },
 };
 
 export default function RootLayout({

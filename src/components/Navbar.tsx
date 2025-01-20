@@ -82,7 +82,7 @@ const Navbar = () => {
                 className="flex-shrink-0"
               >
                 <Image
-                  src="/images/48.jpg"
+                  src="/images/favicon.png"
                   alt="Inovact Logo"
                   width={48}
                   height={48}
