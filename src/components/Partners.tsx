@@ -33,7 +33,8 @@ const PartnersSection = ({ partnerLogos }: any) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center  text-gray-600 mt-4"
           >
-            Helping exceptional companies the right talent at the right time
+            Helping exceptional companies hire the right talent at the right
+            time
           </motion.p>
         </div>
 

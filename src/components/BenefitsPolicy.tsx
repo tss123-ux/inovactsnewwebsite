@@ -30,7 +30,7 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
             cy={1}
             cr={1}
             className={cn(
-              "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] "
+              " [mask-image:linear-gradient(to_bottom,white,transparent,transparent)] "
             )}
           />
           <motion.div
@@ -48,7 +48,7 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="z-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {benefits.map((benefit: any, index: any) => (
               <motion.div
                 key={index}
@@ -57,7 +57,7 @@ const BenefitsAndPolicies = ({ benefits, policies }: any) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group h-[280px] bg-white hover:shadow-lg transition-all duration-300 flex flex-col">
+                <Card className="group h-[280px] z-20 bg-white hover:shadow-lg transition-all duration-300 flex flex-col">
                   <CardContent className="p-6 flex flex-col items-center h-full justify-between">
                     <motion.div
                       initial={{ scale: 0 }}

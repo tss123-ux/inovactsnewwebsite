@@ -64,6 +64,7 @@ import logo6 from "../../assets/rekonsile_logo.jpeg";
 import Image from "next/image";
 import DotPattern from "@/components/ui/dot-pattern";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar";
 
 const formSchema = z.object({
   companyName: z.string().min(1, "Company name is required"),
@@ -295,8 +296,7 @@ const InovactLanding = () => {
       icon: <Blocks className="w-8 h-8 text-blue-600" />,
       title: "Multi-Domain Expertise",
       metric: "4+ Core Domains",
-      description:
-        "Specialized hiring for software development, UI/UX design and many",
+      description: "Specialized hiring for software development and UI/UX",
     },
     {
       // Trophy icon better represents success and achievements
@@ -380,6 +380,7 @@ const InovactLanding = () => {
 
   return (
     <div className="min-h-screen  bg-gradient-to-b from-gray-50 to-white">
+      <Navbar />
       {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]" /> */}
 
       {/* Hero Section */}
@@ -389,7 +390,7 @@ const InovactLanding = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerChildren}
-        className="container mx-auto px-4 py-20 sm:pt-40 pt-20"
+        className="container mx-auto px-4 py-20 sm:pt-20 pt-20"
       >
         <div className="max-w-7xl mx-auto text-center">
           <DotPattern
