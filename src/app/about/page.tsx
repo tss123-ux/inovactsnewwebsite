@@ -50,7 +50,7 @@ export default function AboutPage() {
   };
 
   useEffect(() => {
-    document.title = "Inovact Social | About";
+    document.title = "Inovact | About Us";
   }, []);
 
   return (

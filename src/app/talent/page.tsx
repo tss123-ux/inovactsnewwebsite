@@ -378,7 +378,7 @@ const InovactLanding = () => {
     },
   };
   useEffect(() => {
-    document.title = "Inovact Social | Talent";
+    document.title = "Inovact | Launchpad";
   }, []);
 
   return (
