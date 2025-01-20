@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import NumberTicker from "@/components/ui/number-ticker";
 import { Linkedin } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import DotPattern from "@/components/ui/dot-pattern";
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/ui/grid-pattern";
@@ -48,6 +48,10 @@ export default function AboutPage() {
   const scrollUp = () => {
     scrollUpRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    document.title = "Inovact Social | About";
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-justify">

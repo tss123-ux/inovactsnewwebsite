@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -377,6 +377,9 @@ const InovactLanding = () => {
       transition: { duration: 0.2 },
     },
   };
+  useEffect(() => {
+    document.title = "Inovact Social | Talent";
+  }, []);
 
   return (
     <div className="min-h-screen  bg-gradient-to-b from-gray-50 to-white">
