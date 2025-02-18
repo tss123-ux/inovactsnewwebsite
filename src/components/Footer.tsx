@@ -69,6 +69,16 @@ const Footer = ({
                 Join community
               </h3>
             </div>
+            <Link href="/terms-of-use">
+              <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors cursor-pointer">
+                Terms of use
+              </h3>
+            </Link>
+            <Link href="/privacy-policy">
+              <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors cursor-pointer">
+                Privacy policy
+              </h3>
+            </Link>
           </div>
         </motion.div>
         <motion.div
