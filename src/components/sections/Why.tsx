@@ -147,7 +147,7 @@ const Why = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Image
-              src="/images/49.png"
+              src="/images/last.png"
               alt=""
               width={220}
               height={400}

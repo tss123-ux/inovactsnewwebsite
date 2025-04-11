@@ -282,7 +282,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full transform scale-90" />
 
             <Image
-              src="/images/49.png"
+              src="/images/49_2.png"
               width={1000}
               height={1200}
               alt="App showcase"

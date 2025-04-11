@@ -164,7 +164,7 @@ const Discovery = () => {
                 muted
                 preload="auto"
               >
-                <source src="/videos/discover.mp4" type="video/mp4" />
+                <source src="/videos/rand3.mp4" type="video/mp4" />
               </video>
             </div>
           </div>

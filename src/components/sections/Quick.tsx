@@ -170,7 +170,7 @@ const Quick = () => {
                       data-wf-ignore="true" 
                       data-object-fit="cover"
                     >
-                      <source src="/videos/join.mp4" type="video/mp4"/>
+                      <source src="/videos/rand2.mp4" type="video/mp4"/>
                     </video>
                   `,
               }}

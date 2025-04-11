@@ -125,7 +125,7 @@ const Build = () => {
                       data-wf-ignore="true" 
                       data-object-fit="cover"
                     >
-                      <source src="/videos/build.mp4" type="video/mp4"/>
+                      <source src="/videos/rand1.mp4" type="video/mp4"/>
                     </video>
                   `,
               }}

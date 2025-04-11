@@ -118,7 +118,7 @@ const Rewarded = () => {
                 muted
                 preload="auto"
               >
-                <source src="/videos/win.mp4" type="video/mp4" />
+                <source src="/videos/rand4.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
