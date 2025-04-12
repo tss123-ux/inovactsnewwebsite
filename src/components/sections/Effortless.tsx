@@ -110,7 +110,7 @@ const Effortless = () => {
             <div
               dangerouslySetInnerHTML={{
                 __html: `
-                  <video width="380" height="600" class="w-[380px] h-[600px] p-4" playsinline autoplay loop muted preload="auto" data-wf-ignore="true" data-object-fit="cover">
+                  <video width="380" height="600" class="w-[380px] h-[600px] p-0" playsinline autoplay loop muted preload="auto" data-wf-ignore="true" data-object-fit="cover">
                     <source src="/videos/rand5.mp4" type="video/mp4"/>
                   </video>
                 `,

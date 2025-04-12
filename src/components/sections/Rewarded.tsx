@@ -106,12 +106,12 @@ const Rewarded = () => {
           variants={videoContainerVariants}
           className="lg:w-1/2 w-full flex items-center justify-center relative z-20"
         >
-          <div className="relative p-4 w-full">
+          <div className="relative p-0 w-full">
             <div className="relative z-10">
               <video
                 width="380"
                 height="600"
-                className="w-full max-w-[380px] h-[600px] p-4 mx-auto"
+                className="w-full max-w-[380px] h-[600px] p-0 mx-auto"
                 playsInline
                 autoPlay
                 loop

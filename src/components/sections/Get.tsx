@@ -60,22 +60,40 @@ const Get = () => {
         making waves with their projects and ideas. Join us now and be a part of
         the future.
       </motion.p>
-      <motion.div variants={buttonVariants} whileHover="hover">
-        <Link
-          href="https://play.google.com/store/apps/details?id=in.pranaydas.inovact"
-          target="_blank"
-        >
-          <div className="flex justify-center items-center transition-transform duration-300">
-            <Image
-              src="/images/1.png"
-              width={1000}
-              height={1000}
-              alt="Inovact Social App"
-              className="h-auto w-[180px] sm:w-[250px] rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-        </Link>
-      </motion.div>
+      <div className="flex gap-6">
+        <motion.div variants={buttonVariants} whileHover="hover">
+          <Link
+            href="https://play.google.com/store/apps/details?id=in.pranaydas.inovact"
+            target="_blank"
+          >
+            <div className="flex justify-center items-center transition-transform duration-300">
+              <Image
+                src="/images/1.png"
+                width={1000}
+                height={1000}
+                alt="Inovact Social App"
+                className="h-auto w-[180px] sm:w-[250px] rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          </Link>
+        </motion.div>
+        <motion.div variants={buttonVariants} whileHover="hover">
+          <Link
+            href="https://apps.apple.com/in/app/inovact-social/id6742887820"
+            target="_blank"
+          >
+            <div>
+              <Image
+                src="/images/IosDownload.png"
+                width={1000}
+                height={1000}
+                alt="Play Store"
+                className="h-auto w-[180px] sm:w-[250px] rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          </Link>
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

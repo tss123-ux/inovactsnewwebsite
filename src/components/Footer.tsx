@@ -51,9 +51,12 @@ const Footer = ({
                 About Us
               </h3>
             </Link>
-            <Link href="/talent" target="_self">
+            <Link
+              href="https://inovact-opportunity.vercel.app/"
+              target="_blank"
+            >
               <h3 className="hover:text-gray-300 text-sm sm:text-base transition-colors">
-                LaunchPad
+                Opportunities
               </h3>
             </Link>
           </div>

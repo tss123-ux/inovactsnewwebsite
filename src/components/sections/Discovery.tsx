@@ -157,7 +157,7 @@ const Discovery = () => {
               <video
                 width="380"
                 height="600"
-                className="w-full max-w-[380px] h-[600px] p-4 mx-auto"
+                className="w-full max-w-[380px] h-[600px] p-0 mx-auto"
                 playsInline
                 autoPlay
                 loop

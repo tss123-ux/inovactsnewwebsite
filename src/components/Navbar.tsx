@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isIosHover, setIsIosHovered] = useState(false);
 
   const logoVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -162,6 +163,35 @@ const Navbar = () => {
                     height={160}
                     alt="Play Store"
                     className="scale-75 sm:scale-90 lg:scale-100"
+                  />
+                </motion.div>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={playStoreVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover="hover"
+              className="relative group flex-shrink-0 hidden sm:flex"
+            >
+              <Link
+                href="https://apps.apple.com/in/app/inovact-social/id6742887820"
+                target="_blank"
+                className="block"
+                onMouseEnter={() => setIsIosHovered(true)}
+                onMouseLeave={() => setIsIosHovered(false)}
+              >
+                <motion.div
+                  animate={isIosHover ? { y: -5 } : { y: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Image
+                    src="/images/IosDownload.png"
+                    width={160}
+                    height={160}
+                    alt="Play Store"
+                    className=" scale-75 sm:scale-90 lg:scale-100"
                   />
                 </motion.div>
               </Link>

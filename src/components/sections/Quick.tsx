@@ -161,7 +161,7 @@ const Quick = () => {
                     <video 
                       width="380" 
                       height="600" 
-                      class="w-full max-w-[380px] h-[600px] p-4 mx-auto" 
+                      class="w-full max-w-[380px] h-[600px] p-0 mx-auto" 
                       playsinline 
                       autoplay 
                       loop 
