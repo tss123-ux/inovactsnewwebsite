@@ -98,7 +98,7 @@ const Rewarded = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-32 mb-32 bg-white"
+      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-28 mb-24 bg-white"
     >
       <div className="max-w-7xl w-full lg:flex lg:gap-12 relative z-10">
         {/* Left Column - Video */}
@@ -111,7 +111,7 @@ const Rewarded = () => {
               <video
                 width="380"
                 height="600"
-                className="w-full max-w-[380px] h-[600px] p-0 mx-auto"
+                className="w-full max-w-[380px] h-[600px] p-0 mx-auto mb-8 lg:mb-0"
                 playsInline
                 autoPlay
                 loop

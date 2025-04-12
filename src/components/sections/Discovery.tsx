@@ -98,7 +98,7 @@ const Discovery = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-20 bg-white"
+      className="relative min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-16 bg-white"
     >
       <div className="max-w-7xl w-full lg:flex lg:gap-12 relative z-10">
         {/* Left Column - Content */}

@@ -39,7 +39,7 @@ const Get = () => {
 
   return (
     <motion.div
-      className="max-w-7xl mx-auto flex flex-col justify-between items-center px-5 gap-10 py-12 my-20 lg:mb-32"
+      className="max-w-7xl mx-auto flex flex-col justify-between items-center px-5 gap-10 py-12 my-20 lg:mb-28"
       initial="hidden"
       animate="visible"
       variants={{
@@ -56,7 +56,7 @@ const Get = () => {
         className="lg:text-lg text-justify sm:text-center max-w-2xl mx-auto lg:mx-0 text-base text-zinc-700 leading-relaxed"
         variants={paragraphVariants}
       >
-        Get in on the action with 5000+ students and entrepreneurs already
+        Get in on the action with 6500+ students and entrepreneurs already
         making waves with their projects and ideas. Join us now and be a part of
         the future.
       </motion.p>

@@ -98,7 +98,7 @@ const Effortless = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-16 mb-16"
+      className="min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:mb-7 mb-12 mt-10 lg:mt-24"
     >
       <div className="max-w-7xl w-full lg:flex lg:gap-12">
         {/* Left Column */}

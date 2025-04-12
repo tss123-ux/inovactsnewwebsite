@@ -141,7 +141,7 @@ export default function AboutPage() {
                   <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
                     <NumberTicker
                       className="text-3xl font-bold text-indigo-600 mb-2 "
-                      value={5200}
+                      value={6500}
                     />
                     +
                   </div>

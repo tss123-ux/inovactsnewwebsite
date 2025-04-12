@@ -209,7 +209,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 mix-blend-overlay" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-start py-16 lg:py-20 gap-8 lg:gap-12">
+        <div className="flex flex-col items-center justify-start py-16 lg:py-20  gap-8 lg:gap-12">
           {/* Launch button */}
           <motion.div
             variants={buttonVariants}
@@ -286,8 +286,9 @@ const Hero = () => {
               width={1000}
               height={1200}
               alt="App showcase"
-              className="relative lg:-mb-[27%] -mb-[50%] lg:w-[370px] w-[250px] drop-shadow-2xl"
+              className="relative  lg:w-[350px] w-[250px] drop-shadow-2xl"
             />
+            {/* //lg:-mb-[27%] -mb-[50%] */}
           </motion.div>
         </div>
       </div>

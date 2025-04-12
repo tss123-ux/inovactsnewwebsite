@@ -104,11 +104,11 @@ const Navbar = () => {
               className="hidden md:block"
             >
               <Link
-                href={"/talent"}
+                href={"https://inovact-opportunity.vercel.app/"}
                 target="_blank"
                 className="relative text-gray-700 hover:text-[#1649FF] transition-colors duration-300 py-2 text-lg"
               >
-                <span className="relative z-10">Launchpad</span>
+                <span className="relative z-10">Opportunitites</span>
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1649FF] origin-left"
                   initial={{ scaleX: 0 }}
