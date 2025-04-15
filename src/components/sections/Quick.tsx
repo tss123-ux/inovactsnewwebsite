@@ -170,7 +170,7 @@ const Quick = () => {
                       data-wf-ignore="true" 
                       data-object-fit="cover"
                     >
-                      <source src="/videos/rand2.mp4" type="video/mp4"/>
+                      <source src="https://res.cloudinary.com/dp7wm24gz/video/upload/v1744738081/rand2_skxdu2.mp4" type="video/mp4"/>
                     </video>
                   `,
               }}

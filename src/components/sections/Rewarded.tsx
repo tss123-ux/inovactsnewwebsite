@@ -118,7 +118,10 @@ const Rewarded = () => {
                 muted
                 preload="auto"
               >
-                <source src="/videos/rand4.mp4" type="video/mp4" />
+                <source
+                  src="https://res.cloudinary.com/dp7wm24gz/video/upload/v1744738327/rand4_hfq59d.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </div>
