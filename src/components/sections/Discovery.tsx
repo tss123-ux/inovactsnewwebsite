@@ -165,7 +165,8 @@ const Discovery = () => {
                 preload="auto"
               >
                 <source
-                  src="https://res.cloudinary.com/dp7wm24gz/video/upload/v1744738337/rand3_l5d82t.mp4"
+                  src="/videos/rand3.mp4"
+                  // src="https://res.cloudinary.com/dp7wm24gz/video/upload/v1744738337/rand3_l5d82t.mp4"
                   type="video/mp4"
                 />
               </video>

@@ -125,10 +125,11 @@ const Build = () => {
                       data-wf-ignore="true" 
                       data-object-fit="cover"
                     >
-                      <source src="https://res.cloudinary.com/dp7wm24gz/video/upload/v1744738300/rand1_cdfods.mp4" type="video/mp4"/>
+                      <source src="/videos/rand1.mp4" type="video/mp4"/>
                     </video>
                   `,
               }}
+              // <source src="https://res.cloudinary.com/dp7wm24gz/video/upload/v1744738300/rand1_cdfods.mp4" type="video/mp4"/>
             />
             {/* </div> */}
           </div>

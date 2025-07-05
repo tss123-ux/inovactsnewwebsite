@@ -286,7 +286,7 @@ const Hero = () => {
               width={1000}
               height={1200}
               alt="App showcase"
-              className="relative  lg:w-[350px] w-[250px] drop-shadow-2xl"
+              className="relative  lg:w-[300px] w-[250px] drop-shadow-2xl"
             />
             {/* //lg:-mb-[27%] -mb-[50%] */}
           </motion.div>
