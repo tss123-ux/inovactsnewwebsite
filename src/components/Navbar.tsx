@@ -104,7 +104,7 @@ const Navbar = () => {
               className="hidden md:block"
             >
               <Link
-                href={"https://inovact-opportunity.vercel.app/"}
+                href={"https://landing.inovact.in/"}
                 target="_blank"
                 className="relative text-gray-700 hover:text-[#1649FF] transition-colors duration-300 py-2 text-lg"
               >
