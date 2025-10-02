@@ -15,6 +15,7 @@ import Hero from "@/components/sections/Hero";
 import HorizontalScroll1 from "@/components/sections/HorizontalScroll1";
 import HorizontalScroll2 from "@/components/sections/HorizontalScroll2";
 import Loyal from "@/components/sections/Loyal";
+import Opportunities from "@/components/sections/Opportunities";
 import Quick from "@/components/sections/Quick";
 import Rewarded from "@/components/sections/Rewarded";
 import Vibe from "@/components/sections/Vibe";
@@ -95,6 +96,8 @@ const Page = () => {
       {/* <AnimatedSection> */}
       {/* <MarqueeText /> */}
 
+      <Opportunities />
+      
       <div ref={effortref}>
         <Effortless />
       </div>
