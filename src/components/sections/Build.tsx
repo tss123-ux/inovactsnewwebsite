@@ -106,7 +106,7 @@ const Build = () => {
           variants={videoContainerVariants}
           className="lg:w-1/2 w-full flex items-center justify-center relative z-20"
         >
-          <div className="relative p-4 w-full">
+          <div className="relative p-2 sm:p-4 w-full max-w-lg mx-auto">
             {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl transform rotate-3 scale-105 -z-10" /> */}
             {/* <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden"> */}
             <div
@@ -114,9 +114,9 @@ const Build = () => {
               dangerouslySetInnerHTML={{
                 __html: `
                     <video 
-                      width="380" 
-                      height="600" 
-                      class="w-full max-w-[380px] h-[600px] p-4 mx-auto" 
+                      width="600" 
+                      height="800" 
+                      class="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[600px] h-auto aspect-[3/4] mx-auto object-cover rounded-lg" 
                       playsinline 
                       autoplay 
                       loop 

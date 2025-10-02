@@ -106,11 +106,11 @@ const Effortless = () => {
           variants={videoContainerVariants}
           className="lg:w-1/2 w-full flex items-center justify-center"
         >
-          <div className="relative p-4">
+          <div className="relative p-2 sm:p-4 max-w-lg mx-auto">
             <div
               dangerouslySetInnerHTML={{
                 __html: `
-                  <video width="380" height="600" class="w-[380px] h-[600px] p-0" playsinline autoplay loop muted preload="auto" data-wf-ignore="true" data-object-fit="cover">
+                  <video width="600" height="800" class="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[600px] h-auto aspect-[3/4] mx-auto object-cover rounded-lg" playsinline autoplay loop muted preload="auto" data-wf-ignore="true" data-object-fit="cover">
                     <source src="/videos/rand5.mp4" type="video/mp4"/>
                     </video>
                     `,
