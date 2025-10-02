@@ -141,7 +141,7 @@ export default function AboutPage() {
                   <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
                     <NumberTicker
                       className="text-3xl font-bold text-indigo-600 mb-2 "
-                      value={6500}
+                      value={14000}
                     />
                     +
                   </div>
@@ -153,7 +153,7 @@ export default function AboutPage() {
                   <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
                     <NumberTicker
                       className="text-3xl font-bold text-indigo-600 mb-2"
-                      value={2000}
+                      value={2500}
                     />
                     +
                   </div>
@@ -165,12 +165,12 @@ export default function AboutPage() {
                   <div className="text-3xl flex justify-center font-bold text-indigo-600 mb-2">
                     <NumberTicker
                       className="text-3xl font-bold text-indigo-600 mb-2"
-                      value={350}
+                      value={2000}
                     />
                     +
                   </div>
                   <div className="text-gray-600 sm:text-base text-sm text-center">
-                    Projects Launched
+                    Proof of Work Shared
                   </div>
                 </div>
               </div>
